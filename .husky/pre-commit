@@ -1,0 +1,6 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# 修复代码
+yarn run lint:eslint
+yarn run lint:prettier
