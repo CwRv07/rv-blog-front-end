@@ -1,0 +1,64 @@
+{
+  "name": "rv-blog-front-end",
+  "private": true,
+  "version": "0.0.0",
+  "author": {
+    "name": "Rv_Jiang",
+    "email": "Rv_Jiang@outlook.com"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "lint:eslint": "eslint {library,src}/**/*.{vue,ts,tsx} --fix",
+    "lint:prettier": "prettier {src,mock}/**/*.{html,vue,css,sass,scss,ts,md} --write",
+    "prepare": "husky install"
+  },
+  "resolutions": {
+    "bin-wrapper": "npm:bin-wrapper-china"
+  },
+  "dependencies": {
+    "@vueuse/core": "^8.5.0",
+    "element-plus": "^2.2.2",
+    "pinia": "^2.0.14",
+    "sass": "^1.52.1",
+    "vue": "^3.2.25",
+    "vue-router": "^4.0.13"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.1",
+    "@commitlint/config-conventional": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.26.0",
+    "@typescript-eslint/parser": "^5.26.0",
+    "@vitejs/plugin-legacy": "^1.8.2",
+    "@vitejs/plugin-vue": "^2.3.3",
+    "@vue/eslint-config-prettier": "^7.0.0",
+    "commitizen": "^4.2.4",
+    "consola": "^2.15.3",
+    "cz-conventional-changelog": "3.3.0",
+    "eslint": "^8.16.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^9.0.1",
+    "husky": "^7.0.0",
+    "prettier": "^2.6.2",
+    "typescript": "^4.5.4",
+    "unplugin-auto-import": "^0.8.5",
+    "unplugin-vue-components": "^0.19.6",
+    "vite": "^2.9.9",
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-imagemin": "^0.6.1",
+    "vite-plugin-optimize-persist": "^0.1.2",
+    "vite-plugin-package-config": "^0.1.1",
+    "vite-plugin-style-import": "^2.0.0",
+    "vite-plugin-vue-setup-extend": "^0.4.0",
+    "vue-eslint-parser": "^9.0.2",
+    "vue-global-api": "^0.4.1",
+    "vue-tsc": "^0.34.7"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
