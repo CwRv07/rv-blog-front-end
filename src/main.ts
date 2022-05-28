@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-28 08:15:49
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-28 11:35:14
+ * @LastEditTime: 2022-05-28 18:34:52
  * @Description: 主配置文件
  * @Email: Rv_Jiang@outlook.com
  */
@@ -16,13 +16,16 @@ import App from './App.vue'
 import router from '@/router'
 import { createPinia } from 'pinia'
 /* 全局引入ElementPlus */
-import ElementPlus from 'element-plus'
-import 'element-plus/dist/index.css'
+// import ElementPlus from 'element-plus'
+// import 'element-plus/dist/index.css'
+// import '/styles/index.scss'
+
+import '@/assets/css/index.scss'
 
 const app = createApp(App)
 
 app.use(router)
 app.use(createPinia())
-app.use(ElementPlus)
+// app.use(ElementPlus)
 
 app.mount('#app')

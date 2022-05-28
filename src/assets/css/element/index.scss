@@ -1,0 +1,34 @@
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
+  $colors: (
+    'primary': (
+      'base': #00b5ad,
+    ),
+  ),
+  $text-color: (
+    'primary': #212121,
+    'regular': #000000de,
+  ),
+  $font-size: (
+    'extra-large': 25px,
+    'large': 21px,
+    'medium': 19px,
+    'base': 17px,
+    'small': 16px,
+    'extra-small': 14px,
+  ),
+  $font-family: (
+    '':
+      "'myFont','Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif",
+  )
+);
+
+// if you want to import all
+// @use "element-plus/theme-chalk/src/index.scss" as *;
+
+// You can comment it to hide debug info.
+// @debug $--colors;
+
+// custom dark variables
+@use './dark.scss';
+// import dark theme
+@use 'element-plus/theme-chalk/src/dark/css-vars.scss' as *;

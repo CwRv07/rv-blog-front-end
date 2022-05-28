@@ -92,12 +92,14 @@ summary,
 time,
 mark,
 audio,
+input,
 video {
   margin: 0;
   padding: 0;
   border: 0;
   font-size: 100%;
   font: inherit;
+  font-family: 'myFont','Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
   vertical-align: baseline;
 }
 
@@ -146,7 +148,7 @@ table {
 }
 
 /* 背景色 */
-#app {
+html {
   background-color: #f4f4f4;
 }
 
@@ -158,4 +160,12 @@ table {
 /* 分割线样式 */
 .van-divider.van-divider--hairline {
   margin: 0 !important;
+}
+
+/* 自定义字体 */
+@font-face {
+  font-family: 'myFont';
+  src: url('myfont.ttf');
+  font-weight: normal;
+  font-style: normal;
 }

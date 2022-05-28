@@ -5,9 +5,18 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    ElButton: typeof import('element-plus/es')['ElButton']
+    ElCard: typeof import('element-plus/es')['ElCard']
+    ElCollapseTransition: typeof import('element-plus/es')['ElCollapseTransition']
+    ElIcon: typeof import('element-plus/es')['ElIcon']
+    ElInput: typeof import('element-plus/es')['ElInput']
+    ElMenu: typeof import('element-plus/es')['ElMenu']
+    ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
+    ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    RvArticleCard: typeof import('./../../src/components/base/RvArticleList/components/RvArticleCard.vue')['default']
+    RvArticleGroup: typeof import('./../../src/components/base/RvArticleList/RvArticleGroup.vue')['default']
+    RvHeader: typeof import('./../../src/components/common/RvHeader/RvHeader.vue')['default']
   }
 }
 
