@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-28 18:31:00
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-28 23:37:39
+ * @LastEditTime: 2022-05-29 11:50:27
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -144,7 +144,7 @@
 
     /* 博客logo */
     .nav-logo {
-      padding-right: 20px;
+      padding: 0 10px;
       height: 58px;
       display: flex;
       justify-content: space-between;
