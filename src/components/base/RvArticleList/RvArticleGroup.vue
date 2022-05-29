@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-29 00:05:16
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-29 16:16:17
+ * @LastEditTime: 2022-05-29 17:49:30
  * @Description: 文章列表
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -22,10 +22,7 @@
   <section id="rv-article-group">
     <!-- 文章列表 -->
     <ul class="article-list">
-      <li>
-        <rv-article-card />
-      </li>
-      <li>
+      <li v-for="p in 5" :key="p">
         <rv-article-card />
       </li>
     </ul>

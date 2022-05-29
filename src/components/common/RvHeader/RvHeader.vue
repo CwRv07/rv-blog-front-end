@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-28 18:31:00
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-29 11:50:27
+ * @LastEditTime: 2022-05-29 17:48:54
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -135,7 +135,7 @@
   #rv-header {
     @include body-padding($rv-body-padding-list);
     position: sticky;
-    top: 0;
+    top: -1px;
     z-index: var(--el-index-top);
     color: $header-color-default;
     background-color: $header-color-background;

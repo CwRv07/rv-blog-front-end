@@ -2,19 +2,13 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-29 00:07:36
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-29 15:55:51
+ * @LastEditTime: 2022-05-29 17:52:04
  * @Description: 文章卡片
  * @Email: Rv_Jiang@outlook.com
 -->
 <script setup lang="ts" name="rvArticleCard">
-  import {
-    User,
-    Clock,
-    View,
-    ChatDotRound,
-    CollectionTag,
-  } from '@element-plus/icons-vue'
-  import mediaUtils from '@/utils/mediaUtils'
+  import { User, Clock, View, ChatDotRound } from '@element-plus/icons-vue'
+  // import mediaUtils from '@/utils/mediaUtils'
 </script>
 
 <template>
@@ -159,7 +153,7 @@
             @extend .single-line;
             margin: 5px 0;
             display: flex;
-            flex-wrap: warp;
+            flex-wrap: wrap;
             font-size: var(--el-font-size-extra-small);
             color: var(--el-text-color-secondary);
             // 信息子项
