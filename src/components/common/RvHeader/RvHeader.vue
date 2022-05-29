@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-28 18:31:00
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-29 17:48:54
+ * @LastEditTime: 2022-05-29 23:09:48
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -86,14 +86,7 @@
                 </el-icon>
                 分类
               </template>
-              <el-sub-menu index="2-1" :show-timeout="200" :hide-timeout="200">
-                <template #title>前端</template>
-                <el-menu-item class="menu-item" index="2-4-1">
-                  HTML
-                </el-menu-item>
-                <el-menu-item class="menu-item" index="2-4-2">CSS</el-menu-item>
-                <el-menu-item class="menu-item" index="2-4-3">JS</el-menu-item>
-              </el-sub-menu>
+              <el-menu-item index="2-1">前端</el-menu-item>
               <el-menu-item index="2-2">后端</el-menu-item>
               <el-menu-item index="2-3">数据库</el-menu-item>
             </el-sub-menu>
@@ -134,17 +127,19 @@
 
   #rv-header {
     @include body-padding($rv-body-padding-list);
+    margin-bottom: 30px;
     position: sticky;
     top: -1px;
     z-index: var(--el-index-top);
     color: $header-color-default;
     background-color: $header-color-background;
+    border-bottom: 2px solid var(--el-color-primary);
 
     // 响应式遮挡
 
     /* 博客logo */
     .nav-logo {
-      padding: 0 10px;
+      padding: 0 20px;
       height: 58px;
       display: flex;
       justify-content: space-between;
@@ -168,6 +163,7 @@
         --el-menu-text-color: $header-color-default;
 
         :deep(li) {
+          border-bottom: 0;
           --el-menu-base-level-padding: 10px;
           --el-menu-hover-bg-color: #ffffff22;
         }

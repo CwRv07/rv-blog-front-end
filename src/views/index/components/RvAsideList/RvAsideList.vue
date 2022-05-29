@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-29 16:27:27
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-29 17:50:19
+ * @LastEditTime: 2022-05-29 23:01:04
  * @Description: 侧边框列表
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -56,6 +56,7 @@
       // 标题
       .list-title {
         cursor: pointer;
+        color: var(--el-text-color-regular);
       }
       // 更多
       .list-more {

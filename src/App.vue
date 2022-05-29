@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-28 08:15:49
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-28 18:33:46
+ * @LastEditTime: 2022-05-29 21:30:33
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -11,6 +11,7 @@
 <template>
   <rv-header />
   <router-view />
+  <rv-footer />
 </template>
 
 <style lang="scss"></style>

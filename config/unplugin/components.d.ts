@@ -18,6 +18,7 @@ declare module '@vue/runtime-core' {
     RouterView: typeof import('vue-router')['RouterView']
     RvArticleCard: typeof import('./../../src/components/base/RvArticleList/components/RvArticleCard.vue')['default']
     RvArticleGroup: typeof import('./../../src/components/base/RvArticleList/RvArticleGroup.vue')['default']
+    RvFooter: typeof import('./../../src/components/common/RvFooter/RvFooter.vue')['default']
     RvHeader: typeof import('./../../src/components/common/RvHeader/RvHeader.vue')['default']
   }
 }

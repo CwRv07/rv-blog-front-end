@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-29 00:05:16
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-29 17:49:30
+ * @LastEditTime: 2022-05-29 22:59:27
  * @Description: 文章列表
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -43,9 +43,8 @@
   #rv-article-group {
     // 分页器
     .article-pagination {
-      // font-size: var(--el-font-size-medium);
       :deep(.el-pagination) {
-        --el-pagination-font-size: var(--el-font-size-base);
+        --el-pagination-font-size: var(--el-font-size-medium);
         --el-pagination-button-disabled-bg-color: transparent;
         --el-pagination-bg-color: transparent;
       }
