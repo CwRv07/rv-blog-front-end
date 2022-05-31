@@ -2,11 +2,12 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-30 17:46:53
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-30 23:05:21
+ * @LastEditTime: 2022-05-31 17:37:49
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
 
+// import { sortUserPlugins } from 'vite'
 import Request from './request'
 
 import type { RequestConfig } from './type'
