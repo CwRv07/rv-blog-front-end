@@ -5,6 +5,8 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    ElAvatar: typeof import('element-plus/es')['ElAvatar']
+    ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElCollapseTransition: typeof import('element-plus/es')['ElCollapseTransition']
     ElIcon: typeof import('element-plus/es')['ElIcon']
@@ -16,8 +18,11 @@ declare module '@vue/runtime-core' {
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    RvArticleCard: typeof import('./../../src/components/base/RvArticleList/components/RvArticleCard.vue')['default']
-    RvArticleGroup: typeof import('./../../src/components/base/RvArticleList/RvArticleGroup.vue')['default']
+    RvArticleCard: typeof import('./../../src/components/base/RvArticleGroup/components/RvArticleCard.vue')['default']
+    RvArticleGroup: typeof import('./../../src/components/base/RvArticleGroup/RvArticleGroup.vue')['default']
+    RvCommentCard: typeof import('./../../src/components/base/RvCommentGroup/components/RvCommentCard.vue')['default']
+    RvCommentGroup: typeof import('./../../src/components/base/RvCommentGroup/RvCommentGroup.vue')['default']
+    RvEditor: typeof import('./../../src/components/base/RvEditor/RvEditor.vue')['default']
     RvFooter: typeof import('./../../src/components/common/RvFooter/RvFooter.vue')['default']
     RvHeader: typeof import('./../../src/components/common/RvHeader/RvHeader.vue')['default']
   }

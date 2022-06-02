@@ -3,7 +3,7 @@
  * @Date: 2022-05-28 13:25:20
  * @LastEditors: Rv_Jiang
  * @LastEditTime: 2022-05-28 16:15:10
- * @Description: 
+ * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
 module.exports = {
@@ -73,6 +73,7 @@ module.exports = {
       },
     ],
     '@typescript-eslint/no-explicit-any': ['off'],
-    'vue/multi-word-component-names': 'off'
+    'vue/multi-word-component-names': 'off',
+    'vue/require-default-prop': 'off',
   },
 }

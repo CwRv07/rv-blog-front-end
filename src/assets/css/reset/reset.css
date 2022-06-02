@@ -6,7 +6,7 @@ body {
   /* 图片之间默认间距 */
   font-size: 0;
   /* 不允许去选中文本 */
-  user-select: none;
+  /* user-select: none; */
   /* IOS 下的滑动卡顿问题 */
   -webkit-overflow-scrolling: touch;
   /* IOS 下点击取消默认高亮效果 */
@@ -167,6 +167,6 @@ html {
 @font-face {
   font-family: 'myFont';
   src: url('myfont.ttf');
-  font-weight: normal;
+  font-weight: 900;
   font-style: normal;
 }

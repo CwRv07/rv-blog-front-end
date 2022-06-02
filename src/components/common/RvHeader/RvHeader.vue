@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-28 18:31:00
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-29 23:09:48
+ * @LastEditTime: 2022-06-01 19:09:06
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -127,7 +127,6 @@
 
   #rv-header {
     @include body-padding($rv-body-padding-list);
-    margin-bottom: 30px;
     position: sticky;
     top: -1px;
     z-index: var(--el-index-top);
