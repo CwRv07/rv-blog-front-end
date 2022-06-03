@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-28 18:31:00
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-01 19:09:06
+ * @LastEditTime: 2022-06-02 15:29:59
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -74,22 +74,12 @@
               首页
             </el-menu-item>
             <!-- 分页 -->
-            <el-sub-menu
-              class="col-md-less-12"
-              index="2"
-              :show-timeout="200"
-              :hide-timeout="200"
-            >
-              <template #title>
-                <el-icon>
-                  <Collection />
-                </el-icon>
-                分类
-              </template>
-              <el-menu-item index="2-1">前端</el-menu-item>
-              <el-menu-item index="2-2">后端</el-menu-item>
-              <el-menu-item index="2-3">数据库</el-menu-item>
-            </el-sub-menu>
+            <el-menu-item index="2" class="col-md-less-12">
+              <el-icon>
+                <Collection />
+              </el-icon>
+              分类
+            </el-menu-item>
             <!-- 归档 -->
             <el-menu-item class="col-md-less-12" index="3">
               <el-icon>

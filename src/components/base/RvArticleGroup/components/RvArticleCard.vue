@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-29 00:07:36
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-01 17:56:19
+ * @LastEditTime: 2022-06-03 13:40:47
  * @Description: 文章卡片
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -86,7 +86,7 @@
 
   .rv-article-card {
     cursor: pointer;
-    margin: 20px 0;
+    margin-bottom: 20px;
     .card-body {
       display: flex;
 
