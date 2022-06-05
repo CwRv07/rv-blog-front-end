@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-28 15:05:32
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-03 14:39:43
+ * @LastEditTime: 2022-06-05 18:53:37
  * @Description: 静态路由表
  * @Email: Rv_Jiang@outlook.com
  */
@@ -26,7 +26,12 @@ const staticRoutes: Array<RouteRecordRaw> = [
     component: () => import('@/views/category/category.vue'),
     meta: {},
   },
-
+  {
+    path: '/archive',
+    name: 'archive',
+    component: () => import('@/views/archive/archive.vue'),
+    meta: {},
+  },
   {
     path: '/:pathMatch(.*)',
     name: 'notFound',

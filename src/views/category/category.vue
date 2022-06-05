@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-06-03 14:33:41
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-03 17:38:47
+ * @LastEditTime: 2022-06-05 18:12:57
  * @Description: 分类
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -140,7 +140,7 @@
           .category-item {
             margin: 5px 5px;
             padding: 5px 12px 8px 12px;
-            font-size: var(--el-font-size-medium);
+            font-size: var(--el-font-size-large);
             color: var(--el-text-color-secondary);
             border-radius: 100px;
             background-color: var(--el-fill-color-dark);
