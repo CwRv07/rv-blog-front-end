@@ -2,12 +2,13 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-28 16:07:17
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-03 14:24:46
+ * @LastEditTime: 2022-06-06 15:20:40
  * @Description: 首页
  * @Email: Rv_Jiang@outlook.com
 -->
 <script setup lang="ts" name="index">
   import RvAsideList from './components/RvAsideList/RvAsideList.vue'
+
   /* 文章信息 */
 
   /* 侧边栏信息 */
@@ -59,7 +60,7 @@
       <rv-article-group />
     </aside>
     <!-- 侧边栏信息 -->
-    <aside class="article-extra col-4 col-md-more-3 hidden-xs-only">
+    <aside class="article-extra col-md-less-4 col-md-more-3 hidden-xs-only">
       <!-- 个人名片 -->
       <section class="about-me">
         <!-- 头像 -->

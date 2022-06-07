@@ -4,6 +4,7 @@ $rv-body-padding-list: (
   '1200px': 100px,
   '1920px': 150px,
 );
+
 @mixin body-padding($list) {
   @each $point, $size in $list {
     @media (min-width: $point) {
@@ -11,6 +12,14 @@ $rv-body-padding-list: (
     }
   }
 }
+@mixin minus-margin-left($list) {
+  @each $point, $size in $list {
+    @media (min-width: $point) {
+      $rv-body-padding: $size;
+    }
+  }
+}
+
 $rv-body-margin-list: $rv-body-padding-list;
 @mixin body-margin($list) {
   @each $point, $size in $list {

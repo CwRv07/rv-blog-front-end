@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-28 18:31:00
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-02 15:29:59
+ * @LastEditTime: 2022-06-06 10:25:33
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -17,15 +17,52 @@
     Menu,
   } from '@element-plus/icons-vue'
   import mediaUtils from '@/utils/mediaUtils'
+  import { useRouter } from 'vue-router'
+  const router = useRouter()
 
+  /* nav控制器 */
   const navController = () => {
     menu.navIsShowWhenMD = !menu.navIsShowWhenMD
   }
+
+  const routerJump = (url: string) => {
+    router.push({
+      name: url,
+    })
+  }
+
   const menu = reactive({
     activeIndex: '1',
     backgroundColor: 'transparent',
     navIsShowWhenMD: false,
     navController,
+    list: [
+      {
+        index: '1',
+        icon: markRaw(House),
+        title: '首页',
+        url: 'index',
+      },
+      {
+        index: '2',
+        icon: markRaw(Collection),
+        title: '分类',
+        url: 'category',
+      },
+      {
+        index: '3',
+        icon: markRaw(Guide),
+        title: '归档',
+        url: 'archive',
+      },
+      {
+        index: '4',
+        icon: markRaw(Warning),
+        title: '关于博客',
+        url: 'about',
+      },
+    ],
+    routerJump,
   })
 
   const search = reactive({
@@ -66,33 +103,20 @@
             :ellipsis="false"
             :background-color="menu.backgroundColor"
           >
-            <!-- 首页 -->
-            <el-menu-item index="1" class="col-md-less-12">
-              <el-icon>
-                <House />
-              </el-icon>
-              首页
-            </el-menu-item>
-            <!-- 分页 -->
-            <el-menu-item index="2" class="col-md-less-12">
-              <el-icon>
-                <Collection />
-              </el-icon>
-              分类
-            </el-menu-item>
-            <!-- 归档 -->
-            <el-menu-item class="col-md-less-12" index="3">
-              <el-icon>
-                <Guide />
-              </el-icon>
-              归档
-            </el-menu-item>
-            <!-- 关于博客 -->
-            <el-menu-item class="col-md-less-12" index="4">
-              <el-icon>
-                <Warning />
-              </el-icon>
-              关于博客
+            <el-menu-item
+              v-for="p in menu.list"
+              :key="p.index"
+              :index="p.index"
+              class="col-md-less-12"
+              @click="menu.routerJump(p.url)"
+            >
+              <template v-if="p.icon">
+                <el-icon>
+                  <component :is="p.icon" />
+                </el-icon>
+              </template>
+
+              {{ p.title }}
             </el-menu-item>
           </el-menu>
           <!-- 搜索框 -->

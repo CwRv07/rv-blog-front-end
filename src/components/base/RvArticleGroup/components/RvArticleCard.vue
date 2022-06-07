@@ -2,34 +2,41 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-29 00:07:36
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-03 13:40:47
+ * @LastEditTime: 2022-06-06 15:45:18
  * @Description: 文章卡片
  * @Email: Rv_Jiang@outlook.com
 -->
 <script setup lang="ts" name="rvArticleCard">
   import { User, Clock, View, ChatDotRound } from '@element-plus/icons-vue'
-  // import mediaUtils from '@/utils/mediaUtils'
+  import { PropType } from 'vue'
+  import { ArticleData } from './type'
+
+  const props = defineProps({
+    articleData: {
+      type: Object as PropType<ArticleData>,
+      required: true,
+    },
+  })
+
+  const articleData = ref(props.articleData)
 </script>
 
 <template>
   <el-card class="rv-article-card article-card" shadow="hover">
     <!-- 图片 -->
     <div class="card-body">
-      <aside class="card-img-container">
-        <el-image
-          class="card-img"
-          src="https://i.picsum.photos/id/1005/800/450.jpg?hmac=-8wdoAbn0F4FYUl0i8MKdy8wnMnIzBIBzw5nHgckE9Y"
-          fit="cover"
-          lazy
-        />
+      <aside class="card-img-container" v-if="articleData.avatar">
+        <el-image class="card-img" :src="articleData.avatar" fit="cover" lazy />
       </aside>
       <!-- 文字 -->
       <main class="card-description">
         <!-- 标题和类别 -->
         <header class="card-title">
-          <span class="card-label">前端</span>
+          <span class="card-label">
+            {{ articleData.category.categoryName }}
+          </span>
           <h1 class="title-content">
-            前端小技巧前端小技巧前端小技巧前端小技巧前端小技巧
+            {{ articleData.title }}
           </h1>
         </header>
 
@@ -39,41 +46,36 @@
             <!-- 信息列表 -->
             <ul class="data-list">
               <!-- 作者 -->
-              <li class="author">
+              <li class="author" v-if="articleData.author">
                 <el-icon><User /></el-icon>
-                卷心菜汪
+                {{ articleData.author.nickname }}
               </li>
               <!-- 时间 -->
-              <li class="create-date">
+              <li class="create-date" v-moment-format="articleData.createDate">
                 <el-icon><Clock /></el-icon>
-                20年05月29日
               </li>
               <!-- 观看量 -->
               <li class="view-counts">
                 <el-icon><View /></el-icon>
-                123
+                {{ articleData.viewCounts }}
               </li>
               <!-- 评论数 -->
               <li class="comment-counts">
                 <el-icon><ChatDotRound /></el-icon>
-                321
+                {{ articleData.commentCounts }}
               </li>
             </ul>
           </div>
           <!-- 文章简介 -->
           <div class="card-summary">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Dignissimos magnam architecto eaque alias, exercitationem
-            voluptatibus quis nulla dolorem totam aut minus est enim a autem
-            quaerat illo, fugiat fugit officia.
+            {{ articleData.summary }}
           </div>
         </main>
         <!-- 相关标签 -->
-        <footer class="tag-list">
-          <span class="tag-item">Vue</span>
-          <span class="tag-item">HTML</span>
-          <span class="tag-item">CSS</span>
-          <span class="tag-item">优化</span>
+        <footer class="tag-list" v-if="articleData.tagList">
+          <span class="tag-item" v-for="p in articleData.tagList" :key="p.id">
+            {{ '#' + p.tagName }}
+          </span>
         </footer>
       </main>
     </div>

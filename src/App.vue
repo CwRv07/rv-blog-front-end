@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-28 08:15:49
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-03 17:37:55
+ * @LastEditTime: 2022-06-07 10:14:45
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -17,6 +17,7 @@
     <router-view />
     <rv-footer />
   </el-config-provider>
+  <el-backtop :right="40" :bottom="40" />
 </template>
 
 <style lang="scss">
@@ -37,7 +38,11 @@
     --el-font-size-small: 14px;
     --el-font-size-extra-small: 13px;
   }
-  #app {
-    line-height: 1.2;
+
+  //icon图标加粗
+  .el-icon {
+    stroke: currentColor;
+    stroke-width: 65px;
+    transform: translateY(2px);
   }
 </style>

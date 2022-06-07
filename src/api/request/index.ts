@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-30 17:46:53
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-31 17:37:49
+ * @LastEditTime: 2022-06-06 14:48:16
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
@@ -32,6 +32,28 @@ const request = new Request({
       return result
     },
   },
+  // Long类型数据额外处理
+  transformResponse: [
+    function transformResponse(data) {
+      if (typeof data === 'string') {
+        try {
+          const c1 = data
+            .toString()
+            .replace(/:\d{17,}/g, ':"@rr$&"')
+            .replace(/@rr:\s/g, '')
+            .replace(/@rr:/g, '')
+          const c2 = c1
+            .replace(/:\d{1,}\.\d+/g, ':"@rr$&"')
+            .replace(/@rr:\s/g, '')
+            .replace(/@rr:/g, '')
+          data = JSON.parse(c2)
+        } catch (e) {
+          /* Ignore */
+        }
+      }
+      return data
+    },
+  ],
 })
 /**
  * @description: Request函数的描述
