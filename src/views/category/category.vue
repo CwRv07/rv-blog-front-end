@@ -2,28 +2,32 @@
  * @Author: Rv_Jiang
  * @Date: 2022-06-03 14:33:41
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-05 18:12:57
+ * @LastEditTime: 2022-06-09 17:29:38
  * @Description: 分类
  * @Email: Rv_Jiang@outlook.com
 -->
 <script setup lang="ts" name="category">
-  /* 类别选择器 */
-  // 选择类别
+  import { CategoryAPI } from '@/api'
+
+  // 类别选择器
+
+  /* 选择类别 */
   const selectCategory = (value: number) => {
     if (value != category.selectValue) {
       category.selectValue = value
     }
   }
+  /* 类别初始化 */
+  onMounted(() => {
+    CategoryAPI.listCategory().then(({ data }) => {
+      console.log(data)
+      category.list.push(...data)
+    })
+  })
 
   const category = reactive({
     selectValue: 0,
-    list: [
-      { label: '全部类别', value: 0 },
-      { label: '前端', value: 1 },
-      { label: '后端', value: 2 },
-      { label: '大数据', value: 3 },
-      { label: '生活', value: 4 },
-    ],
+    list: [{ categoryName: '全部类别', id: 0 }],
     selectCategory,
   })
   /* /类别选择器 */
@@ -61,12 +65,12 @@
         <ul class="category-list">
           <li
             class="category-item"
-            :class="{ active: category.selectValue == p.value }"
+            :class="{ active: category.selectValue == p.id }"
             v-for="p in category.list"
-            :key="p.value"
-            @click="category.selectCategory(p.value)"
+            :key="p.id"
+            @click="category.selectCategory(p.id)"
           >
-            {{ p.label }}
+            {{ p.categoryName }}
           </li>
         </ul>
       </section>

@@ -2,14 +2,14 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-29 00:07:36
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-06 15:45:18
+ * @LastEditTime: 2022-06-09 10:27:49
  * @Description: 文章卡片
  * @Email: Rv_Jiang@outlook.com
 -->
 <script setup lang="ts" name="rvArticleCard">
   import { User, Clock, View, ChatDotRound } from '@element-plus/icons-vue'
   import { PropType } from 'vue'
-  import { ArticleData } from './type'
+  import { ArticleData } from '@/utils/type'
 
   const props = defineProps({
     articleData: {

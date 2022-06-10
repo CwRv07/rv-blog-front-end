@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-28 08:15:49
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-07 10:14:45
+ * @LastEditTime: 2022-06-09 10:31:28
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -42,7 +42,7 @@
   //icon图标加粗
   .el-icon {
     stroke: currentColor;
-    stroke-width: 65px;
-    transform: translateY(2px);
+    stroke-width: 50px;
+    transform: translateY(1px);
   }
 </style>

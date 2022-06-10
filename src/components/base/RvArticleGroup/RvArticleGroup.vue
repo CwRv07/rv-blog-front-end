@@ -2,14 +2,14 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-29 00:05:16
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-06 15:28:15
+ * @LastEditTime: 2022-06-09 10:27:32
  * @Description: 文章列表
  * @Email: Rv_Jiang@outlook.com
 -->
 <script setup lang="ts" name="rvArticleGroup">
   import { ArticlesAPI } from '@/api'
   import { Ref } from 'vue'
-  import { ArticleData } from './components/type'
+  import { ArticleData } from '@/utils/type'
   import { useRouter } from 'vue-router'
 
   // 分页器
@@ -70,6 +70,7 @@
         :total="pagination.total"
         layout="prev, pager, next"
         @current-change="pagination.currentChange"
+        hide-on-single-page
       />
     </footer>
   </section>

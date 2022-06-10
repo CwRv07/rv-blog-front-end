@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-28 08:15:49
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-06 15:44:25
+ * @LastEditTime: 2022-06-09 09:57:24
  * @Description: 主配置文件
  * @Email: Rv_Jiang@outlook.com
  */
@@ -23,13 +23,13 @@ import { createPinia } from 'pinia'
 import '@/assets/css/index.scss'
 //ElementPlus hidden
 import 'element-plus/theme-chalk/display.css'
-import momentFormate from '@/utils/momentFormate'
+import MomentFormate from '@/utils/momentFormat'
 
 const app = createApp(App)
 
 app.use(router)
 app.use(createPinia())
 // app.use(ElementPlus)
-app.directive('momentFormat', momentFormate)
+app.directive('momentFormat', MomentFormate)
 
 app.mount('#app')
