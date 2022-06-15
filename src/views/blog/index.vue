@@ -1,15 +1,26 @@
 <!--
  * @Author: Rv_Jiang
- * @Date: 2022-05-28 08:15:49
+ * @Date: 2022-06-13 17:17:20
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-13 17:27:31
+ * @LastEditTime: 2022-06-13 17:26:41
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
-<script setup lang="ts" name="app"></script>
+<script setup lang="ts" name="blogIndex">
+  import { ElConfigProvider } from 'element-plus'
+  import zhCn from 'element-plus/lib/locale/lang/zh-cn'
+</script>
 
 <template>
-  <router-view />
+  <div>
+    <el-config-provider :locale="zhCn">
+      <rv-header />
+      <router-view />
+      <rv-footer />
+    </el-config-provider>
+    <el-backtop :right="40" :bottom="40" />
+    <rv-full-screen-loading />
+  </div>
 </template>
 
 <style lang="scss">
@@ -29,17 +40,5 @@
     --el-font-size-base: 15px;
     --el-font-size-small: 14px;
     --el-font-size-extra-small: 13px;
-  }
-
-  //icon图标加粗
-  .el-icon {
-    stroke: currentColor;
-    stroke-width: 50px;
-    transform: translateY(1px);
-  }
-
-  // 全屏加载动画
-  .el-loading-mask.is-fullscreen {
-    backdrop-filter: blur(5px);
   }
 </style>

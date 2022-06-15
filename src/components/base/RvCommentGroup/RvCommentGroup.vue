@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-06-01 20:50:00
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-09 11:02:30
+ * @LastEditTime: 2022-06-10 09:28:38
  * @Description: 卡片list
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -24,7 +24,6 @@
 
   /* 获取回复信息 */
   const emits = defineEmits(['getReplyInfo'])
-  const replayInfo = reactive({})
   const getReplyInfo = (replayInfo: CommentData) => {
     emits('getReplyInfo', replayInfo)
   }

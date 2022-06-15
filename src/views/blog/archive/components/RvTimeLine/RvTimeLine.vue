@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-06-05 19:06:32
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-06 09:11:53
+ * @LastEditTime: 2022-06-10 13:29:50
  * @Description: RvTimeLine
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -27,6 +27,7 @@
   })
   const getTimeLineData = () => {
     ArticlesAPI.listArticle(currentPage.value).then(({ data }) => {
+      data = data.records
       let length = data.length
 
       /* 是否数据为空 */

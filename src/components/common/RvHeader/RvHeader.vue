@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-28 18:31:00
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-06 10:25:33
+ * @LastEditTime: 2022-06-14 14:45:09
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -18,6 +18,8 @@
   } from '@element-plus/icons-vue'
   import mediaUtils from '@/utils/mediaUtils'
   import { useRouter } from 'vue-router'
+  import { useNavStore } from '@/store/nav'
+  import { storeToRefs } from 'pinia'
   const router = useRouter()
 
   /* nav控制器 */
@@ -25,12 +27,14 @@
     menu.navIsShowWhenMD = !menu.navIsShowWhenMD
   }
 
+  /* 路由跳转 */
   const routerJump = (url: string) => {
     router.push({
       name: url,
     })
   }
 
+  /* 菜单数据 */
   const menu = reactive({
     activeIndex: '1',
     backgroundColor: 'transparent',
@@ -65,20 +69,31 @@
     routerJump,
   })
 
-  const search = reactive({
-    value: '',
-    callback: () => {
-      return
-    },
+  /* 菜单激活项检测 */
+  const { currentRouterName } = storeToRefs(useNavStore())
+  // 初始设置
+  onMounted(() => {
+    changMenuActiveIndex()
   })
+  // 检测改变
+  watch(currentRouterName, () => changMenuActiveIndex)
+  const changMenuActiveIndex = () => {
+    let currentIndex = 0
+    menu.list.forEach((val, index) => {
+      if (val.url === currentRouterName.value) {
+        currentIndex = index + 1
+      }
+    })
+    menu.activeIndex = currentIndex.toString()
+  }
 </script>
 
 <template>
-  <header id="rv-header">
+  <header id="rv-header" :router="currentRouterName">
     <main class="row">
       <!-- 博客logo -->
       <section class="nav-logo col-1 col-md-less-12">
-        <h1 class="logo-name">RvBlog</h1>
+        <h1 class="logo-name" @click="menu.routerJump('index')">RvBlog</h1>
         <aside
           class="nav-controller"
           v-show="!mediaUtils.isMD"
@@ -122,11 +137,12 @@
           <!-- 搜索框 -->
           <el-input
             class="nav-search col-3 col-md-less-12"
-            v-model="search.value"
+            v-model="undefined"
             placeholder="搜索文章"
             clearable
-            @change="search.callback"
             :suffix-icon="Search"
+            @click="menu.routerJump('category')"
+            v-show="currentRouterName !== 'category'"
           />
         </section>
       </el-collapse-transition>
@@ -147,6 +163,7 @@
     color: $header-color-default;
     background-color: $header-color-background;
     border-bottom: 2px solid var(--el-color-primary);
+    user-select: none;
 
     // 响应式遮挡
 
@@ -160,6 +177,7 @@
       font-size: 30px;
       font-weight: bold;
       color: var(--el-color-primary);
+      cursor: pointer;
 
       .nav-controller {
         width: 30px;

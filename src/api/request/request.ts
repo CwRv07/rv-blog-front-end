@@ -57,8 +57,11 @@ class Request {
     // 全局响应拦截器保证最后执行
     this.instance.interceptors.response.use(
       (res: AxiosResponse) => {
-        // console.log('全局响应拦截器')
-        //只返回响应中所需要的data数据
+        // 只返回响应中所需要的data数据
+        // 根据响应体success属性分类处理
+        if (!res.data.success) {
+          return Promise.reject(res.data)
+        }
         return res.data
       },
       (err: any) => err

@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-06-06 09:17:58
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-06 10:06:32
+ * @LastEditTime: 2022-06-10 13:33:39
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -73,7 +73,7 @@
     <section class="copyright">
       <ul class="info-list">
         <li class="info-item">
-          本站文字除特别注明外，皆为原创，如若有侵犯您的权益，请立即联系我删除！
+          本站除特别注明外，皆为原创，如若有侵犯您的权益，请立即联系我删除！
         </li>
         <li class="info-item">
           本站文章均可转载，但需保留本站相应的文章链接！
@@ -95,6 +95,7 @@
         color: var(--el-color-primary);
       }
       --el-bg-color: #f4f4f4;
+      --el-border-color: var(--el-color-primary);
     }
 
     /* 信息列表 */

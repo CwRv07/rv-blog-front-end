@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-28 16:07:17
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-06 15:20:40
+ * @LastEditTime: 2022-06-13 17:37:12
  * @Description: 首页
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -31,8 +31,8 @@
     link: {
       github: {
         title: 'github',
-        icon: 'src/assets/img/icon/github.svg',
-        link: '',
+        icon: '/src/assets/img/icon/github.svg',
+        link: 'https://github.com/CwRv07',
       },
       qq: {
         title: 'qq',

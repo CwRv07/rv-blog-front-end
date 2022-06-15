@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-29 00:05:16
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-09 10:27:32
+ * @LastEditTime: 2022-06-14 14:47:37
  * @Description: 文章列表
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -14,7 +14,7 @@
 
   // 分页器
   const currentChange = (page: number) => {
-    console.log(page)
+    updateArticleDate(page)
   }
   const pagination = reactive({
     currentPage: 1,
@@ -38,11 +38,49 @@
     })
   })
 
+  // 更新文章数据函数
+  const updateArticleDate = (page: number) => {
+    let params: {
+      page: number
+      categoryId?: number | string
+      tagId?: string[]
+      upperLimitTime?: number | string
+      lowerLimitTime?: number | string
+      search?: string
+    } = { page }
+
+    if (props.categoryId) params.categoryId = props.categoryId
+    if (props.tagId) params.tagId = props.tagId
+    if (props.upperLimitTime && props.lowerLimitTime) {
+      params.upperLimitTime = props.upperLimitTime
+      params.lowerLimitTime = props.lowerLimitTime
+    }
+    if (props.search) params.search = props.search
+    ArticlesAPI.listArticleByCondition(params).then(({ data }) => {
+      /* 文章数据初始化 */
+      articleData.value = data.records
+      /* 分页器初始化 */
+      pagination.currentPage = data.current
+      pagination.pageSize = data.size
+      pagination.total = data.total
+    })
+  }
   // 文章详情页跳转
   const router = useRouter()
   const routerToArticleDetail = (articleId: string | number) => {
-    router.push({ path: `/article/${articleId}` })
+    router.push({ path: `/blog/article/${articleId}` })
   }
+
+  // 文章筛选
+  const props = defineProps<{
+    categoryId?: string
+    tagId?: string[]
+    upperLimitTime?: string
+    lowerLimitTime?: string
+    search?: string
+  }>()
+  /* 检测文章选择参数 */
+  watch(props, () => updateArticleDate(1))
 </script>
 
 <template>
