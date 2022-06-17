@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-28 09:43:23
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-28 15:47:06
+ * @LastEditTime: 2022-06-16 10:50:14
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
@@ -16,7 +16,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 export function configAutoImportPlugin() {
   return AutoImport({
     imports: ['vue'],
-    // resolvers: [ElementPlusResolver({ importStyle: false })],
+    resolvers: [ElementPlusResolver({ importStyle: 'sass' })],
     // 指定文件生成路径
     dts: 'config/unplugin/auto-imports.d.ts',
     eslintrc: {

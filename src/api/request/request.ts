@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from 'axios'
 import type { AxiosInstance, AxiosRequestConfig } from 'axios'
 import { RequestConfig, RequestInterceptors, CancelRequestSource } from './type'
+import { useAdminStore } from '@/store/admin'
 
 class Request {
   //axios实例
@@ -42,7 +43,14 @@ class Request {
     // 全局请求拦截器
     this.instance.interceptors.request.use(
       (res: AxiosRequestConfig) => {
-        // console.log('全局请求拦截器')
+        const adminStore = useAdminStore()
+        console.log(adminStore.getToken)
+
+        // //配置token
+        // if (localStorage.getItem('Authorization')) {
+        //   config.headers['X-Auth-Token'] = localStorage.getItem('Authorization')
+        // }
+
         return res
       },
       (err: any) => err

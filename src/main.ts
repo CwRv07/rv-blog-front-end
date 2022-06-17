@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-28 08:15:49
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-09 09:57:24
+ * @LastEditTime: 2022-06-17 09:32:32
  * @Description: 主配置文件
  * @Email: Rv_Jiang@outlook.com
  */
@@ -23,6 +23,8 @@ import { createPinia } from 'pinia'
 import '@/assets/css/index.scss'
 //ElementPlus hidden
 import 'element-plus/theme-chalk/display.css'
+import '@/assets/css/element/index.scss'
+import '@/assets/css/element/dark.scss'
 import MomentFormate from '@/utils/momentFormat'
 
 const app = createApp(App)

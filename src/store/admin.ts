@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-06-15 22:38:45
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-15 22:46:04
+ * @LastEditTime: 2022-06-16 17:31:44
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
@@ -28,6 +28,10 @@ export const useAdminStore = defineStore('admin', {
         return '未登录'
       }
       return this.account
+    },
+
+    getToken(): string {
+      return this.token
     },
   },
   actions: {

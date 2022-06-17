@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-28 11:06:07
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-16 00:59:32
+ * @LastEditTime: 2022-06-16 09:33:00
  * @Description: router配置文件
  * @Email: Rv_Jiang@outlook.com
  */
@@ -49,6 +49,7 @@ router.beforeEach(() => {
 
   /* 加载动画 OPEN */
   fullScreenLoading.open()
+  console.log('导航守卫-before')
 })
 router.beforeEach((to) => {
   const fullScreenLoading = useFullScreenLoadingStore()
@@ -62,5 +63,6 @@ router.beforeEach((to) => {
   /* 导航栏激活项跳转 */
   // console.log(to.name)
   nav.push(to.name as string)
+  console.log('导航守卫-after')
 })
 export default router

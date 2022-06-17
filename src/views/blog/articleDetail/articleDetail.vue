@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-31 20:00:36
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-09 16:09:15
+ * @LastEditTime: 2022-06-17 14:49:40
  * @Description: 文章详情页
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -15,6 +15,7 @@
   import { ArticlesAPI, CommentAPI } from '@/api'
   import { useWindowSize } from '@vueuse/core'
   import { ElMessage } from 'element-plus'
+  import RegularUtils from '@/utils/regularUtils'
 
   /* 评论板块 */
   // 评论数据
@@ -75,11 +76,7 @@
       return
     }
     // 邮箱格式
-    if (
-      !/^[A-Za-z0-9\u4e00-\u9fa5_]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(
-        params.email
-      )
-    ) {
+    if (!RegularUtils.emailRegularUtils(params.email)) {
       ElMessage({
         message: '邮箱格式不正确',
         type: 'warning',
@@ -87,10 +84,7 @@
       return
     }
     // 网站格式
-    if (
-      params.website !== '' &&
-      !/^((ht|f)tps?:\/\/)?[\w-]+(\.[\w-]+)+$/.test(params.website)
-    ) {
+    if (!RegularUtils.websiteRegularUtils(params.website)) {
       ElMessage({
         message: '站点格式错误',
         type: 'warning',
@@ -105,7 +99,7 @@
         })
       } else {
         ElMessage({
-          message: data.message,
+          message: data.msg,
           type: 'warning',
         })
       }
