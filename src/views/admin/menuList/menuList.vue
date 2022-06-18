@@ -2,12 +2,11 @@
  * @Author: Rv_Jiang
  * @Date: 2022-06-14 15:03:03
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-17 22:21:20
+ * @LastEditTime: 2022-06-18 17:26:39
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
 <script setup lang="ts" name="menuList">
-  import { DefineComponent } from 'vue'
   import { useRouter } from 'vue-router'
   import {
     House,
@@ -50,6 +49,7 @@
         {
           index: '3-2',
           title: '文章上传',
+          url: '/admin/articleEdit',
         },
       ],
     },

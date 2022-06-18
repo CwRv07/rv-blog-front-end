@@ -2,14 +2,14 @@
  * @Author: Rv_Jiang
  * @Date: 2022-06-16 11:35:00
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-17 22:49:39
+ * @LastEditTime: 2022-06-18 16:38:30
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
 
 <script setup lang="ts" name="adminUser">
   import { UserAPI } from '@/api'
-  import { ElMessage } from 'element-plus'
+  import { ElMessage, ElMessageBox } from 'element-plus'
   import type { FormRules } from 'element-plus'
   import RegularUtils from '@/utils/regularUtils'
 

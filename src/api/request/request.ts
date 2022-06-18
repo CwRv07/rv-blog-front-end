@@ -1,5 +1,9 @@
 import axios, { AxiosResponse } from 'axios'
-import type { AxiosInstance, AxiosRequestConfig } from 'axios'
+import type {
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosRequestHeaders,
+} from 'axios'
 import { RequestConfig, RequestInterceptors, CancelRequestSource } from './type'
 import { useAdminStore } from '@/store/admin'
 
@@ -44,13 +48,8 @@ class Request {
     this.instance.interceptors.request.use(
       (res: AxiosRequestConfig) => {
         const adminStore = useAdminStore()
-        console.log(adminStore.getToken)
-
-        // //配置token
-        // if (localStorage.getItem('Authorization')) {
-        //   config.headers['X-Auth-Token'] = localStorage.getItem('Authorization')
-        // }
-
+        ;(res.headers as AxiosRequestHeaders).Authorization =
+          adminStore.getToken
         return res
       },
       (err: any) => err

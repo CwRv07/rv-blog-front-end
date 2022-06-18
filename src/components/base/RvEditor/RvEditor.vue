@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-31 22:22:25
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-09 15:23:52
+ * @LastEditTime: 2022-06-18 12:10:59
  * @Description: 富文本编辑器二次封装
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -10,7 +10,7 @@
   import MdEditor from 'md-editor-v3'
   import 'md-editor-v3/lib/style.css'
 
-  const emit = defineEmits(['update:Value', 'getCatalog'])
+  const emit = defineEmits(['update:value', 'getCatalog', 'save'])
   const props = defineProps({
     value: {
       type: String,
@@ -37,8 +37,9 @@
       :preview-theme="props.theme"
       :show-code-row-number="true"
       :preview-only="props.previewOnly"
-      @change="(value) => emit('update:Value', value)"
+      @change="(value) => emit('update:value', value)"
       @get-catalog="(list:any)=>emit('getCatalog',list)"
+      @save="(value) => emit('save', value)"
     />
   </div>
 </template>

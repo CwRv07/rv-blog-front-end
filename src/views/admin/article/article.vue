@@ -2,13 +2,16 @@
  * @Author: Rv_Jiang
  * @Date: 2022-06-17 22:18:35
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-17 22:50:01
+ * @LastEditTime: 2022-06-18 17:24:59
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
 <script setup lang="ts" name="adminArticle">
   import { ArticlesAPI } from '@/api'
-  import { ElMessage } from 'element-plus'
+  import { ElMessage, ElMessageBox } from 'element-plus'
+  import { MomentUtils } from '@/utils/momentFormat'
+  import { useRouter } from 'vue-router'
+  const router = useRouter()
 
   /* 用户分页查询函数封装 */
   const PageArticleByCondition = (page: number) => {
@@ -23,7 +26,6 @@
       search: select.search,
     })
       .then(({ data }) => {
-        console.log(data)
         tableData.length = 0
         tableData.push(...data.records)
 
@@ -45,9 +47,8 @@
     viewCounts: number
     commentCounts: number
     weight: number
-    authorId: number | string
-    bodyId: number | string
-    categoryId: number | string
+    author: { id: number; nickname: string; [key: string]: any }
+    category: { id: number; categoryName: string; [key: string]: any }
   }
 
   /* 表字段数据 */
@@ -55,14 +56,14 @@
     {
       prop: 'id',
       label: 'ID',
-      width: 100,
+      width: 150,
       fixed: true,
       overflow: true,
     },
     {
       prop: 'title',
       label: '标题',
-      width: 100,
+      width: 200,
       overflow: true,
     },
     {
@@ -74,8 +75,11 @@
     {
       prop: 'createDate',
       label: '创建时间',
-      width: 100,
+      width: 200,
       overflow: true,
+      formatter: (row: any, column: any, cellValue: any) => {
+        return MomentUtils.formate(cellValue as number | string)
+      },
     },
     {
       prop: 'viewCounts',
@@ -95,22 +99,22 @@
       width: 80,
     },
     {
-      prop: 'authorId',
-      label: '作者ID',
+      prop: 'author',
+      label: '作者',
       width: 100,
       overflow: true,
+      formatter: (row: any, column: any, cellValue: any) => {
+        return cellValue?.nickname
+      },
     },
     {
-      prop: 'bodyId',
-      label: '内容ID',
+      prop: 'category',
+      label: '类别',
       width: 100,
       overflow: true,
-    },
-    {
-      prop: 'categoryId',
-      label: '类别ID',
-      width: 100,
-      overflow: true,
+      formatter: (row: any, column: any, cellValue: any) => {
+        return cellValue?.categoryName
+      },
     },
   ])
   /* 表数据 */
@@ -118,99 +122,32 @@
   /* 初始化表数据与分页器数据 */
   onMounted(() => {
     PageArticleByCondition(1)
-
-    /* 修复初次编辑不检测BUG */
-    showDialog.value = false
   })
 
   /* 编辑表数据 */
-  // dialog控制器
-  const showDialog = ref(true)
-  // 缓存数据
-  const cacheEditData: { index: number } & ArticleProps = {
-    index: -1,
-    id: '',
-    title: '',
-    summary: '',
-    createDate: 0,
-    viewCounts: 0,
-    commentCounts: 0,
-    weight: 0,
-    authorId: '',
-    bodyId: '',
-    categoryId: '',
-  }
-  // 编辑数据
-  const editData: ArticleProps = reactive({
-    id: '',
-    title: '',
-    summary: '',
-    createDate: 0,
-    viewCounts: 0,
-    commentCounts: 0,
-    weight: 0,
-    authorId: '',
-    bodyId: '',
-    categoryId: '',
-  })
   // 展示编辑数据
-  const editItem = (index: number, detail: ArticleProps) => {
-    cacheEditData.index = index
-    editData.id = cacheEditData.id = detail.id
-    editData.title = cacheEditData.title = detail.title
-    editData.summary = cacheEditData.summary = detail.summary
-    editData.createDate = cacheEditData.createDate = detail.createDate
-    editData.viewCounts = cacheEditData.viewCounts = detail.viewCounts
-    editData.commentCounts = cacheEditData.commentCounts = detail.commentCounts
-    editData.weight = cacheEditData.weight = detail.weight
-    editData.authorId = cacheEditData.authorId = detail.authorId
-    editData.bodyId = cacheEditData.bodyId = detail.bodyId
-    editData.categoryId = cacheEditData.categoryId = detail.categoryId
-
-    showDialog.value = true
-  }
-  // 保存编辑数据
-  const saveItem = () => {
-    ElMessageBox.confirm('请再次确认当前操作', '警告', {
-      confirmButtonText: '确认',
-      cancelButtonText: '取消',
-      type: 'warning',
-    })
-      .then(() => {
-        return
-      })
-      .catch(() => {
-        return
-      })
-  }
-  // 重置编辑数据
-  const resetItem = () => {
-    editData.id = cacheEditData.id
-    editData.title = cacheEditData.title
-    editData.summary = cacheEditData.summary
-    editData.createDate = cacheEditData.createDate
-    editData.viewCounts = cacheEditData.viewCounts
-    editData.commentCounts = cacheEditData.commentCounts
-    editData.weight = cacheEditData.weight
-    editData.authorId = cacheEditData.authorId
-    editData.bodyId = cacheEditData.bodyId
-    editData.categoryId = cacheEditData.categoryId
+  const editItem = (index: number, row: ArticleProps) => {
+    router.push({ path: `/admin/articleEdit/${row.id}` })
   }
   // 删除编辑数据
-  const deleteItem = (index: number) => {
-    console.log(index)
-
+  const deleteItem = (index: number, row: ArticleProps) => {
     ElMessageBox.confirm('请再次确认是否删除当前数据', '警告', {
       confirmButtonText: '确认',
       cancelButtonText: '取消',
       type: 'warning',
     }).then(() => {
-      return
+      ArticlesAPI.deleteArticle(row.id)
+        .then(() => {
+          ElMessage({ type: 'success', message: '文章删除成功' })
+        })
+        .catch((error) => {
+          ElMessage({ type: 'error', message: error.msg })
+        })
     })
   }
   // 新增编辑数据
   const insertItem = () => {
-    return
+    router.push({ path: '/admin/articleEdit' })
   }
   /* /编辑表数据 */
 
@@ -230,8 +167,8 @@
   const select = reactive({
     categoryId: '',
     tagId: '',
-    upperLimitTime: 0,
-    lowerLimitTime: 0,
+    upperLimitTime: undefined,
+    lowerLimitTime: undefined,
     search: '',
   })
   watch(select, () => {
@@ -265,35 +202,6 @@
       @insert-item="insertItem"
       @change-page="changePage"
     />
-
-    <!-- <el-dialog v-model="showDialog" title="游客用户数据" draggable>
-      <el-form
-        label-width="80px"
-        :model="editData"
-        :rules="rules"
-        style="width: 100%; max-width: 500px"
-        label-position="right"
-        status-icon
-      >
-        <el-form-item label="ID" prop="id">
-          <el-input v-model="editData.id" />
-        </el-form-item>
-        <el-form-item label="昵称" prop="nickname">
-          <el-input v-model="editData.nickname" />
-        </el-form-item>
-        <el-form-item label="邮箱" prop="email">
-          <el-input v-model="editData.email" />
-        </el-form-item>
-        <el-form-item label="站点" prop="website">
-          <el-input v-model="editData.website" />
-        </el-form-item>
-        <el-form-item prop="controller">
-          <el-button type="primary" @click="saveItem">修改</el-button>
-          <el-button type="primary" @click="resetItem">重置</el-button>
-          <el-button type="primary" @click="showDialog = false">取消</el-button>
-        </el-form-item>
-      </el-form>
-    </el-dialog> -->
   </main>
 </template>
 

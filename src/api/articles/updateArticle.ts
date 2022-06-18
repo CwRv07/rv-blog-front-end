@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-30 22:48:20
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-31 15:50:27
+ * @LastEditTime: 2022-06-18 16:21:22
  * @Description: 更新文章
  * @Email: Rv_Jiang@outlook.com
  */
@@ -10,12 +10,12 @@ import rvRequest from '@/api/request'
 import { MODULE_BASE_URL } from './index'
 
 interface UpdateArticleData {
-  id: number
+  id: number | string
   title: string
   content: string
   summary: string
-  categoryId: number
-  tags: number[]
+  categoryId: number | string
+  tags: (number | string)[]
 }
 
 const updateArticle = (data: UpdateArticleData) => {

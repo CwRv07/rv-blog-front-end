@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-28 11:06:07
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-16 09:33:00
+ * @LastEditTime: 2022-06-18 11:12:33
  * @Description: router配置文件
  * @Email: Rv_Jiang@outlook.com
  */
@@ -18,9 +18,8 @@ const routes: Array<RouteRecordRaw> = [
     children: [...blogRoutes],
   },
   /* 后台路由 */
-  { path: '/admin', redirect: '/admin/index' },
   {
-    path: '/admin/index',
+    path: '/admin',
     component: () => import('@/views/admin/index.vue'),
     children: [...adminRoutes],
   },

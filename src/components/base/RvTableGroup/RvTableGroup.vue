@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-06-16 11:43:42
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-17 22:02:46
+ * @LastEditTime: 2022-06-18 17:26:08
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -11,13 +11,14 @@
   import { Plus } from '@element-plus/icons-vue'
 
   /* 表格数据 & 分页器数据 */
-  const props = defineProps<{
+  defineProps<{
     tableProps: {
       prop: string
       label: string
       width: string | number
       fixed?: boolean
       overflow?: boolean
+      formatter?: (row: any, column: any, cellValue: any, index: any) => any
     }[]
     tableData: { [key: string]: any }[]
     pageData: {
@@ -47,6 +48,7 @@
         :min-width="p.width"
         :fixed="p.fixed == null ? false : true"
         :show-overflow-tooltip="p.overflow == null ? false : true"
+        :formatter="p.formatter"
       />
       <el-table-column fixed="right" min-width="100">
         <template #header>
