@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-29 00:05:16
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-14 14:47:37
+ * @LastEditTime: 2022-06-21 00:34:21
  * @Description: 文章列表
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -68,7 +68,7 @@
   // 文章详情页跳转
   const router = useRouter()
   const routerToArticleDetail = (articleId: string | number) => {
-    router.push({ path: `/blog/article/${articleId}` })
+    router.push({ path: `/article/${articleId}` })
   }
 
   // 文章筛选

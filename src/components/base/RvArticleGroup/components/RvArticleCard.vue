@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-29 00:07:36
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-09 10:27:49
+ * @LastEditTime: 2022-06-21 00:42:37
  * @Description: 文章卡片
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -19,6 +19,7 @@
   })
 
   const articleData = ref(props.articleData)
+  const IMAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL
 </script>
 
 <template>
@@ -26,7 +27,12 @@
     <!-- 图片 -->
     <div class="card-body">
       <aside class="card-img-container" v-if="articleData.avatar">
-        <el-image class="card-img" :src="articleData.avatar" fit="cover" lazy />
+        <el-image
+          class="card-img"
+          :src="IMAGE_BASE_URL + articleData.avatar"
+          fit="cover"
+          lazy
+        />
       </aside>
       <!-- 文字 -->
       <main class="card-description">
