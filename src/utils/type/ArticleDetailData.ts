@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-06-09 10:11:30
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-09 10:21:42
+ * @LastEditTime: 2022-06-21 22:43:00
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
@@ -24,4 +24,5 @@ export default interface ArticleDetailData {
   category: CategoryData
   commentList: CommentData[]
   tagList: TagData[]
+  avatar?: string
 }

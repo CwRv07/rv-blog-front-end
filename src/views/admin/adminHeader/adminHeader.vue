@@ -2,24 +2,15 @@
  * @Author: Rv_Jiang
  * @Date: 2022-06-14 15:15:50
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-14 15:24:09
+ * @LastEditTime: 2022-06-22 01:31:16
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
 
-<script setup lang="ts" name="admin-header">
-  import { ArrowRight } from '@element-plus/icons-vue'
-</script>
+<script setup lang="ts" name="admin-header"></script>
 
 <template>
-  <div id="admin-header">
-    <el-breadcrumb :separator-icon="ArrowRight">
-      <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>
-      <el-breadcrumb-item>promotion management</el-breadcrumb-item>
-      <el-breadcrumb-item>promotion list</el-breadcrumb-item>
-      <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
-    </el-breadcrumb>
-  </div>
+  <div id="admin-header"></div>
 </template>
 
 <style lang="scss" scoped>

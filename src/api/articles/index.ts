@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-30 22:45:45
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-31 15:18:05
+ * @LastEditTime: 2022-06-21 10:40:21
  * @Description: 文章api
  * @Email: Rv_Jiang@outlook.com
  */
@@ -14,6 +14,7 @@ import insertArticle from './insertArticle'
 import deleteArticle from './deleteArticle'
 import updateArticle from './updateArticle'
 import articleDetail from './articleDetail'
+import countArticle from './countArticle'
 
 const ArticlesAPI = {
   listArticle,
@@ -22,5 +23,6 @@ const ArticlesAPI = {
   deleteArticle,
   updateArticle,
   articleDetail,
+  countArticle,
 }
 export default ArticlesAPI

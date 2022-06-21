@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-06-14 15:28:35
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-16 09:31:29
+ * @LastEditTime: 2022-06-21 18:18:14
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -13,6 +13,8 @@
   import { LoginAPI } from '@/api'
   import { useAdminStore } from '@/store/admin'
   import { useRouter } from 'vue-router'
+  import router from '@/router'
+  import adminRoutes from '@/router/adminRouter'
 
   /* 表格元素 */
   const formEl = ref<FormInstance>()
@@ -42,7 +44,7 @@
 
   /* 登录 */
   const adminStore = useAdminStore()
-  const router = useRouter()
+  const routerInstance = useRouter()
   const login = () => {
     LoginAPI({
       account: form.account.trim(),
@@ -50,7 +52,12 @@
     })
       .then(({ data }) => {
         adminStore.login(form.account, data)
-        router.replace({ path: '/admin' })
+        /* 动态路由 */
+        adminRoutes.forEach((item) => {
+          router.addRoute('adminIndex', item)
+        })
+        /* 跳转路由 */
+        routerInstance.replace({ path: '/admin' })
       })
       .catch((error) => {
         ElMessage({ type: 'error', message: error.msg })

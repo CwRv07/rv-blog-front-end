@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-06-14 15:35:29
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-18 14:31:49
+ * @LastEditTime: 2022-06-21 17:56:37
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
@@ -14,22 +14,22 @@ const adminRoutes: Array<RouteRecordRaw> = [
   },
   {
     path: 'user',
-    meta: {},
+    meta: { token: true },
     component: () => import('@/views/admin/user/user.vue'),
   },
   {
     path: 'article',
-    meta: {},
+    meta: { token: true },
     component: () => import('@/views/admin/article/article.vue'),
   },
   {
     path: 'articleEdit/:articleId',
-    meta: {},
+    meta: { token: true },
     component: () => import('@/views/admin/article/articleEdit.vue'),
   },
   {
     path: 'articleEdit',
-    meta: {},
+    meta: { token: true },
     component: () => import('@/views/admin/article/articleEdit.vue'),
   },
 ]

@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-06-05 19:14:20
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-05 22:22:10
+ * @LastEditTime: 2022-06-21 23:13:40
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -39,6 +39,7 @@
 
 <style lang="scss" scoped>
   .rv-time-line-item {
+    cursor: pointer;
     > li {
       margin-bottom: 5px;
     }

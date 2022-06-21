@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-29 16:28:30
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-29 17:52:09
+ * @LastEditTime: 2022-06-21 10:59:40
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -21,6 +21,7 @@
     Orange,
     Pear,
   } from '@element-plus/icons-vue'
+  import { useRouter } from 'vue-router'
   const iconList = [
     Apple,
     CoffeeCup,
@@ -47,6 +48,11 @@
     title: string
     index: number
   }>()
+
+  const router = useRouter()
+  const routerToCategory = () => {
+    router.push({ path: `/category` })
+  }
 </script>
 
 <template>
@@ -54,7 +60,7 @@
     <el-icon>
       <component :is="getIcon(index)" />
     </el-icon>
-    <span class="item-title">{{ title }}</span>
+    <span class="item-title" @click="routerToCategory">{{ title }}</span>
   </div>
 </template>
 

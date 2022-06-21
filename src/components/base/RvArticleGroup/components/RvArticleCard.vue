@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-29 00:07:36
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-21 00:42:37
+ * @LastEditTime: 2022-06-21 10:09:47
  * @Description: 文章卡片
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -10,6 +10,7 @@
   import { User, Clock, View, ChatDotRound } from '@element-plus/icons-vue'
   import { PropType } from 'vue'
   import { ArticleData } from '@/utils/type'
+  import { useRouter } from 'vue-router'
 
   const props = defineProps({
     articleData: {
@@ -20,6 +21,11 @@
 
   const articleData = ref(props.articleData)
   const IMAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL
+
+  const router = useRouter()
+  const routerToCategory = () => {
+    router.push({ path: `/category` })
+  }
 </script>
 
 <template>
@@ -38,7 +44,7 @@
       <main class="card-description">
         <!-- 标题和类别 -->
         <header class="card-title">
-          <span class="card-label">
+          <span class="card-label" @click.stop="routerToCategory">
             {{ articleData.category.categoryName }}
           </span>
           <h1 class="title-content">
@@ -79,7 +85,12 @@
         </main>
         <!-- 相关标签 -->
         <footer class="tag-list" v-if="articleData.tagList">
-          <span class="tag-item" v-for="p in articleData.tagList" :key="p.id">
+          <span
+            class="tag-item"
+            v-for="p in articleData.tagList"
+            :key="p.id"
+            @click.stop="routerToCategory"
+          >
             {{ '#' + p.tagName }}
           </span>
         </footer>

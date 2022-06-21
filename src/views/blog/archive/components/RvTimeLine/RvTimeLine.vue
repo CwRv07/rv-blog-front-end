@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-06-05 19:06:32
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-10 13:29:50
+ * @LastEditTime: 2022-06-22 01:31:00
  * @Description: RvTimeLine
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -19,6 +19,7 @@
   const timeLineData: TimeLineDate[] = reactive([])
   const currentDate = ref('')
   const currentPage = ref(1)
+  // const pageSize = ref(6)
   const isDisabled = ref(false)
   const isEmpty = ref(true)
 
@@ -29,7 +30,7 @@
     ArticlesAPI.listArticle(currentPage.value).then(({ data }) => {
       data = data.records
       let length = data.length
-
+      console.log(data)
       /* 是否数据为空 */
       if (isEmpty.value && length == 0) {
         return
@@ -41,10 +42,9 @@
       currentPage.value++
 
       /* 是否终止无限加载 */
-      if (length != 10) {
+      if (length != 6) {
         isDisabled.value = true
       }
-      console.log(data, length, isDisabled.value, currentPage.value)
 
       for (; i < length; i++) {
         /* 获取当前时间轴 */

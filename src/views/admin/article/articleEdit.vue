@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-06-18 09:55:28
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-18 17:24:02
+ * @LastEditTime: 2022-06-21 19:07:09
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -42,7 +42,7 @@
 
   /* 初始化数据 */
   const initData = () => {
-    if (articleData.id != null) {
+    if (articleData.id != '' && articleData.id != null) {
       ArticlesAPI.articleDetail(articleData.id)
         .then(({ data }) => {
           Object.keys(articleData).forEach((val) => {
@@ -55,6 +55,8 @@
           })
         })
         .catch((error) => {
+          console.log('articleDetail')
+
           ElMessage({ type: 'error', message: error.msg })
         })
     } else {
@@ -96,7 +98,6 @@
     () => router.currentRoute.value.path,
     (toPath) => {
       //要执行的方法
-      console.log(toPath)
       if (toPath === '/admin/articleEdit') {
         articleData.id = ''
         articleData.avatar = ''
@@ -116,7 +117,7 @@
   )
   /* 重置文章 */
   const resetArticle = () => {
-    if (articleData.id != null) {
+    if (articleData.id != '' && articleData.id != null) {
       ArticlesAPI.articleDetail(articleData.id)
         .then(({ data }) => {
           Object.keys(articleData).forEach((val) => {
@@ -149,7 +150,7 @@
   }
   /* 保存文章 */
   const saveArticle = () => {
-    if (articleData.id != null) {
+    if (articleData.id != '' && articleData.id != null) {
       ArticlesAPI.updateArticle({
         id: articleData.id,
         title: articleData.title.trim(),

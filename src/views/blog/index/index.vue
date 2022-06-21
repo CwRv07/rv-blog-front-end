@@ -2,12 +2,14 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-28 16:07:17
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-13 17:37:12
+ * @LastEditTime: 2022-06-21 22:00:25
  * @Description: 首页
  * @Email: Rv_Jiang@outlook.com
 -->
 <script setup lang="ts" name="index">
   import RvAsideList from './components/RvAsideList/RvAsideList.vue'
+  import { ArticlesAPI, CategoryAPI, TagAPI } from '@/api'
+  import { CategoryData, TagData } from '@/utils/type'
 
   /* 文章信息 */
 
@@ -24,9 +26,9 @@
       job: '全栈打杂师',
     },
     detail: {
-      article: { num: 40, title: '文章' },
-      category: { num: 40, title: '分类' },
-      tag: { num: 40, title: '标签' },
+      article: { num: 0, title: '文章' },
+      category: { num: 0, title: '分类' },
+      tag: { num: 0, title: '标签' },
     },
     link: {
       github: {
@@ -37,20 +39,47 @@
       qq: {
         title: 'qq',
         icon: 'src/assets/img/icon/qq.svg',
-        link: '',
+        link: 'https://qm.qq.com/cgi-bin/qm/qr?k=bAHuX3GIF7PxHQ0iPtSyOTYScceJoocd&noverify=0',
       },
     },
   })
+  // 初始化数据
+  onMounted(() => {
+    ArticlesAPI.countArticle().then(({ data }) => {
+      aboutMe.detail.article.num = data
+    })
+    CategoryAPI.countCategory().then(({ data }) => {
+      aboutMe.detail.category.num = data
+    })
+    TagAPI.countTag().then(({ data }) => {
+      aboutMe.detail.tag.num = data
+    })
+  })
   // 类别列表
-  const categoryList = {
+  const categoryList = reactive({
     title: '精选类别',
-    list: ['前端', '后端', '数据库', '生活'],
-  }
+    list: [] as string[],
+  })
+  onMounted(() => {
+    CategoryAPI.listCategory().then(({ data }) => {
+      ;(data as CategoryData[]).forEach((item) => {
+        categoryList.list.push(item.categoryName)
+      })
+    })
+  })
   // 标签列表
-  const tagList = {
+  const tagList = reactive({
     title: '热门标签',
-    list: ['HTML', 'CSS', 'JS', 'TS', 'Vue'],
-  }
+    list: [] as string[],
+  })
+  onMounted(() => {
+    TagAPI.listTag().then(({ data }) => {
+      data = data.slice(0, 5)
+      ;(data as TagData[]).forEach((item) => {
+        tagList.list.push(item.tagName)
+      })
+    })
+  })
 </script>
 
 <template>

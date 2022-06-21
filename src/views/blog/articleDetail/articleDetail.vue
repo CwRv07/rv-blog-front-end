@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-31 20:00:36
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-17 14:49:40
+ * @LastEditTime: 2022-06-22 01:23:40
  * @Description: 文章详情页
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -84,7 +84,11 @@
       return
     }
     // 网站格式
-    if (!RegularUtils.websiteRegularUtils(params.website)) {
+    if (
+      params.website != null &&
+      params.website.length !== 0 &&
+      !RegularUtils.websiteRegularUtils(params.website)
+    ) {
       ElMessage({
         message: '站点格式错误',
         type: 'warning',
@@ -141,6 +145,7 @@
       ({ data }) => {
         /* 文章数据初始化 */
         articleDetail.value = data
+        console.log(articleDetail.value)
 
         /* 目录初始化 */
         setTimeout(() => {
@@ -152,16 +157,22 @@
       }
     )
   })
+  const imagePrefix = import.meta.env.VITE_IMAGE_BASE_URL
 </script>
 
 <template>
-  <main id="article-detail">
+  <main
+    id="article-detail"
+    :style="{
+      'background-image': 'url(' + imagePrefix + articleDetail.avatar + ')',
+    }"
+  >
     <!-- 文章简介 -->
     <header class="article-header">
       <!-- 文章标题 -->
       <h1 class="article-title">{{ articleDetail.title }}</h1>
       <!-- 文章数据 -->
-      <ul class="article-data">
+      <ul class="article-data" v-if="articleDetail.createDate">
         <li class="data-item">
           <el-icon><Clock /></el-icon>
           <span
@@ -309,7 +320,6 @@
 
 <style lang="scss" scoped>
   #article-detail {
-    // background-image: url(@/assets/img/img0.png);
     background-size: 100% auto;
     background-repeat: no-repeat;
 
@@ -328,6 +338,7 @@
         font-size: 60px;
         font-weight: bold;
         margin: 10px;
+        text-shadow: 0 0 50px rgba($color: #fff, $alpha: 0.5);
       }
       /* 文章数据 */
       .article-data {
@@ -379,8 +390,8 @@
       .article-catalog {
         position: fixed;
         /* 初始位置 */
-        margin-left: -9999px;
-        bottom: -9999px;
+        margin-left: 0;
+        bottom: 0;
         opacity: 0;
         display: flex;
         z-index: 100;

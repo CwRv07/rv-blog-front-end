@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-06-16 11:43:42
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-18 17:26:08
+ * @LastEditTime: 2022-06-21 21:08:19
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -104,6 +104,10 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
+    }
+
+    .el-pagination {
+      padding: 0;
     }
   }
 </style>

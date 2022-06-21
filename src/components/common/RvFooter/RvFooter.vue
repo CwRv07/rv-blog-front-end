@@ -2,11 +2,30 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-29 21:00:31
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-29 23:08:03
+ * @LastEditTime: 2022-06-21 23:16:20
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
-<script setup lang="ts" name="rvFooter"></script>
+<script setup lang="ts" name="rvFooter">
+  import { ArticleData } from '@/utils/type'
+  import { ArticlesAPI } from '@/api'
+  import { useRouter } from 'vue-router'
+
+  // 新增文章数据
+  const newArticle = reactive<ArticleData[]>([])
+  onMounted(() => {
+    ArticlesAPI.listArticle(1).then(({ data }) => {
+      for (let i = 0; i < 4; i++) {
+        newArticle.push(data.records[i])
+      }
+    })
+  })
+  // 跳转文章页面
+  const router = useRouter()
+  const routerToArticleDetail = (articleId: number | string) => {
+    router.push({ path: `/article/${articleId}` })
+  }
+</script>
 
 <template>
   <footer id="rv-footer">
@@ -17,6 +36,7 @@
         <p class="title">页面</p>
         <ul class="list">
           <li class="item">首页</li>
+          <li class="item">分类</li>
           <li class="item">归档</li>
           <li class="item">关于博客</li>
         </ul>
@@ -25,21 +45,23 @@
       <section class="new-info col-4 col-md-less-6">
         <p class="title">新增博客</p>
         <ul class="list">
-          <li class="item">HTML</li>
-          <li class="item">HTML</li>
-          <li class="item">HTML</li>
-          <li class="item">HTML</li>
-          <li class="item">HTML</li>
+          <li
+            class="item single-line"
+            v-for="p in newArticle"
+            :key="p.id"
+            @click="routerToArticleDetail(p.id)"
+          >
+            {{ p.title }}
+          </li>
         </ul>
       </section>
       <!-- 介绍 -->
       <section class="description-info col-4 col-md-less-12">
-        <p class="title">关于博客</p>
+        <p class="title">博客介绍</p>
         <div class="description-content">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet, quo
-          earum! Nostrum eos rerum, quis veritatis necessitatibus aliquam sint
-          nulla ea exercitationem similique minus blanditiis error, voluptas
-          nobis. Vitae, doloremque?
+          关于博客为Rv_Jiang的原创内容，用于存放和分享一些有用或没用的杂物。
+          <br />
+          如果对于本博客您有什么意见和想法，欢迎通过以下联系方式与我交流
         </div>
       </section>
     </section>

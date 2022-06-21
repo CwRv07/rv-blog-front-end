@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-06-01 20:50:00
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-10 09:28:38
+ * @LastEditTime: 2022-06-21 22:31:17
  * @Description: 卡片list
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -27,6 +27,7 @@
   const getReplyInfo = (replayInfo: CommentData) => {
     emits('getReplyInfo', replayInfo)
   }
+  console.log(props.commentGroup)
 </script>
 
 <template>
