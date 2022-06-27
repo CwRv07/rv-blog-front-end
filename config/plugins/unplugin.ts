@@ -2,47 +2,47 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-28 09:43:23
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-05-28 09:46:46
+ * @LastEditTime: 2022-06-16 10:50:14
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
-import AutoImport from "unplugin-auto-import/vite";
-import Components from "unplugin-vue-components/vite";
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
 // import Icons from 'unplugin-icons/vite'
 // import IconsResolver from 'unplugin-icons/resolver'
 // import { FileSystemIconLoader } from 'unplugin-icons/loaders'
-import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 export function configAutoImportPlugin() {
-	return AutoImport({
-		imports: ["vue"],
-		resolvers: [ElementPlusResolver({ importStyle: false })],
-		// 指定文件生成路径
-		dts: "config/unplugin/auto-imports.d.ts",
-		eslintrc: {
-			enabled: true, // Default `false`
-			filepath: "./.eslintrc-auto-import.json", // Default `./.eslintrc-auto-import.json`
-			globalsPropValue: true, // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
-		},
-	});
+  return AutoImport({
+    imports: ['vue'],
+    resolvers: [ElementPlusResolver({ importStyle: 'sass' })],
+    // 指定文件生成路径
+    dts: 'config/unplugin/auto-imports.d.ts',
+    eslintrc: {
+      enabled: true, // Default `false`
+      filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
+      globalsPropValue: true, // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
+    },
+  })
 }
 
 export function configVueComponentsPlugin() {
-	return Components({
-		// 用于搜索组件的目录的相对路径。
-		dirs: ["src/components"],
-		resolvers: [
-			ElementPlusResolver(),
-			// IconsResolver({ prefix: "icon", customCollections: ["custom"] }),
-		],
-		// 指定文件生成路径
-		dts: "config/unplugin/components.d.ts",
-		// 组件的有效文件扩展名。
-		extensions: ["vue"],
-		// 允许子目录作为组件的命名空间前缀。
-		directoryAsNamespace: false,
-		deep: true,
-	});
+  return Components({
+    // 用于搜索组件的目录的相对路径。
+    dirs: ['src/components'],
+    resolvers: [
+      ElementPlusResolver({ importStyle: 'sass' }),
+      // IconsResolver({ prefix: "icon", customCollections: ["custom"] }),
+    ],
+    // 指定文件生成路径
+    dts: 'config/unplugin/components.d.ts',
+    // 组件的有效文件扩展名。
+    extensions: ['vue'],
+    // 允许子目录作为组件的命名空间前缀。
+    directoryAsNamespace: false,
+    deep: true,
+  })
 }
 
 // export function configVueIconsPlugin() {

@@ -1,3 +1,11 @@
+/*
+ * @Author: Rv_Jiang
+ * @Date: 2022-05-28 13:25:20
+ * @LastEditors: Rv_Jiang
+ * @LastEditTime: 2022-06-17 16:13:47
+ * @Description:
+ * @Email: Rv_Jiang@outlook.com
+ */
 module.exports = {
   root: true,
   env: {
@@ -65,5 +73,8 @@ module.exports = {
       },
     ],
     '@typescript-eslint/no-explicit-any': ['off'],
+    'vue/multi-word-component-names': 'off',
+    'vue/require-default-prop': 'off',
+    'vue/no-mutating-props': 'off',
   },
 }

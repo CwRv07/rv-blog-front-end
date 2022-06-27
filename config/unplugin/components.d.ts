@@ -5,9 +5,38 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    ElAvatar: typeof import('element-plus/es')['ElAvatar']
+    ElBacktop: typeof import('element-plus/es')['ElBacktop']
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElCard: typeof import('element-plus/es')['ElCard']
+    ElCollapseTransition: typeof import('element-plus/es')['ElCollapseTransition']
+    ElDatePicker: typeof import('element-plus/es')['ElDatePicker']
+    ElDivider: typeof import('element-plus/es')['ElDivider']
+    ElEmpty: typeof import('element-plus/es')['ElEmpty']
+    ElIcon: typeof import('element-plus/es')['ElIcon']
+    ElImage: typeof import('element-plus/es')['ElImage']
+    ElInput: typeof import('element-plus/es')['ElInput']
+    ElMenu: typeof import('element-plus/es')['ElMenu']
+    ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
+    ElOption: typeof import('element-plus/es')['ElOption']
+    ElPagination: typeof import('element-plus/es')['ElPagination']
+    ElSelect: typeof import('element-plus/es')['ElSelect']
+    ElTag: typeof import('element-plus/es')['ElTag']
+    ElTimeline: typeof import('element-plus/es')['ElTimeline']
+    ElTimelineItem: typeof import('element-plus/es')['ElTimelineItem']
+    InfiniteScroll: typeof import('element-plus/es')['ElInfiniteScroll']
+    Loading: typeof import('element-plus/es')['ElLoadingDirective']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    RvArticleCard: typeof import('./../../src/components/base/RvArticleGroup/components/RvArticleCard.vue')['default']
+    RvArticleGroup: typeof import('./../../src/components/base/RvArticleGroup/RvArticleGroup.vue')['default']
+    RvCommentCard: typeof import('./../../src/components/base/RvCommentGroup/components/RvCommentCard.vue')['default']
+    RvCommentGroup: typeof import('./../../src/components/base/RvCommentGroup/RvCommentGroup.vue')['default']
+    RvEditor: typeof import('./../../src/components/base/RvEditor/RvEditor.vue')['default']
+    RvFooter: typeof import('./../../src/components/common/RvFooter/RvFooter.vue')['default']
+    RvFullScreenLoading: typeof import('./../../src/components/common/RvFullScreenLoading/RvFullScreenLoading.vue')['default']
+    RvHeader: typeof import('./../../src/components/common/RvHeader/RvHeader.vue')['default']
+    RvTableGroup: typeof import('./../../src/components/base/RvTableGroup/RvTableGroup.vue')['default']
   }
 }
 

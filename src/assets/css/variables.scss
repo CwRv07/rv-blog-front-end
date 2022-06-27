@@ -1,1 +1,104 @@
-$rv-width: 1000px;
+// body左右padding全局变量
+$rv-body-padding-list: (
+  '600px': 50px,
+  '1200px': 100px,
+  '1920px': 150px,
+);
+
+@mixin body-padding($list) {
+  @each $point, $size in $list {
+    @media (min-width: $point) {
+      padding: 0 $size;
+    }
+  }
+}
+@mixin minus-margin-left($list) {
+  @each $point, $size in $list {
+    @media (min-width: $point) {
+      $rv-body-padding: $size;
+    }
+  }
+}
+
+$rv-body-margin-list: $rv-body-padding-list;
+@mixin body-margin($list) {
+  @each $point, $size in $list {
+    @media (min-width: $point) {
+      margin: 0 $size;
+    }
+  }
+}
+
+// 仿bootstrap栅格布局封装
+$rv-xs-width: 567px;
+$rv-sm-width: 567px;
+$rv-md-width: 768px;
+$rv-lg-width: 992px;
+$rv-xl-width: 1200px;
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+/* Mixin Grid Directive */
+@mixin grid($prefix) {
+  @for $i from 1 through 12 {
+    .#{$prefix}-#{$i} {
+      grid-column: span $i;
+    }
+  }
+}
+/* Common Grid */
+@include grid(col);
+/* Extra small Grid */
+@media screen and (min-width: 567px) {
+  @include grid(col-xs-more);
+}
+@media screen and (max-width: 567px) {
+  @include grid(col-xs-less);
+}
+/* Small Grid */
+@media screen and (min-width: 567px) {
+  @include grid(col-sm-more);
+}
+@media screen and (max-width: 567px) {
+  @include grid(col-sm-less);
+}
+/* Medium Grid */
+@media screen and (min-width: 768px) {
+  @include grid(col-md-more);
+}
+@media screen and (max-width: 768px) {
+  @include grid(col-md-less);
+}
+/* Large Grid */
+@media screen and (min-width: 992px) {
+  @include grid(col-lg-more);
+}
+@media screen and (max-width: 992px) {
+  @include grid(col-lg-less);
+}
+/* Extra Grid */
+@media screen and (min-width: 1200px) {
+  @include grid(col-xl-more);
+}
+@media screen and (max-width: 1200px) {
+  @include grid(col-xl-less);
+}
+
+/* 单行文本 */
+.single-line {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 双行文本 */
+.two-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
