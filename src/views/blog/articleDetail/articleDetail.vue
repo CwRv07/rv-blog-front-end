@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-31 20:00:36
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-22 01:23:40
+ * @LastEditTime: 2022-06-29 16:15:41
  * @Description: 文章详情页
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -16,6 +16,7 @@
   import { useWindowSize } from '@vueuse/core'
   import { ElMessage } from 'element-plus'
   import RegularUtils from '@/utils/regularUtils'
+  import QrcodeVue from 'qrcode.vue'
 
   /* 评论板块 */
   // 评论数据
@@ -157,7 +158,36 @@
       }
     )
   })
+
+  /* 获取图片路径前缀 */
   const imagePrefix = import.meta.env.VITE_IMAGE_BASE_URL
+
+  /* 分享功能路径 */
+  const fullPath = window.location.href
+  const toShare = (website: string) => {
+    switch (website) {
+      case 'weibo':
+        window.open(
+          `http://service.weibo.com/share/share.php?url=${fullPath}&title=${articleDetail.value.title}`
+        )
+        break
+      case 'weixin':
+      case 'qq':
+        ElMessageBox({
+          title: '二维码分享',
+          message: h(QrcodeVue, {
+            value: fullPath,
+            size: 200,
+            style: { display: 'block', margin: '0 auto' },
+          }),
+          showConfirmButton: false,
+        })
+        break
+    }
+  }
+
+  /* 打赏功能-金额数 */
+  const reward = reactive([5, 10, 20])
 </script>
 
 <template>
@@ -243,6 +273,39 @@
         ref="catalogControllerEl"
       >
         目录
+      </div>
+      <!-- 分享控制器 -->
+      <div class="share-controller" tabindex="1">
+        <ul class="controller-list">
+          <li class="controller-item" @click="toShare('weibo')">微博</li>
+          <li class="controller-item" @click="toShare('qq')">QQ</li>
+          <li class="controller-item" @click="toShare('weixin')">微信</li>
+        </ul>
+        分享
+        <!-- <div class="share-qr-code">
+          <qrcode-vue :value="`https://www.baidu.com`" :size="100" level="H" />
+        </div> -->
+      </div>
+      <!-- 分享控制器 -->
+      <div class="reward-controller" tabindex="3">
+        <ul class="controller-list">
+          <li class="controller-item" v-for="p in reward" :key="p">
+            <router-link
+              :to="{
+                name: 'pay',
+                query: {
+                  status: 'paying',
+                  subject: `打赏${p}元`,
+                  total: p.toString(),
+                },
+              }"
+              target="_blank"
+            >
+              {{ p }}元
+            </router-link>
+          </li>
+        </ul>
+        打赏
       </div>
     </main>
     <!-- 文章评论 -->
@@ -417,17 +480,16 @@
         }
       }
 
-      .catalog-controller {
+      .controller-style {
         --el-backtop-bg-color: var(--el-bg-color-overlay);
         --el-backtop-text-color: var(--el-color-primary);
         --el-backtop-hover-bg-color: var(--el-border-color-extra-light);
         position: fixed;
-        bottom: 90px;
-        right: 40px;
         background-color: var(--el-backtop-bg-color);
-        width: 40px;
+        // width: 40px;
+        padding: 0 3px;
         height: 40px;
-        border-radius: 50%;
+        border-radius: 5000px;
         color: var(--el-backtop-text-color);
         display: flex;
         align-items: center;
@@ -436,6 +498,45 @@
         box-shadow: var(--el-box-shadow-lighter);
         cursor: pointer;
         z-index: 5;
+        &:hover {
+          background-color: var(--el-backtop-hover-bg-color);
+          .controller-list {
+            display: flex;
+          }
+        }
+
+        .controller-list {
+          // display: flex;
+          display: none;
+          align-items: center;
+
+          .controller-item {
+            margin-right: 10px;
+            padding: 0 5px;
+            &:hover {
+              color: var(--el-color-primary-dark-2);
+            }
+          }
+        }
+      }
+      .catalog-controller {
+        @extend .controller-style;
+        bottom: 190px;
+        right: 40px;
+      }
+      .share-controller {
+        @extend .controller-style;
+        bottom: 140px;
+        right: 40px;
+      }
+      .reward-controller {
+        @extend .controller-style;
+        bottom: 90px;
+        right: 40px;
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
       }
     }
 

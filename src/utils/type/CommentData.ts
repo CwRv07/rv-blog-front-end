@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-06-09 10:17:14
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-09 10:20:29
+ * @LastEditTime: 2022-06-29 20:39:39
  * @Description:
  * @Email: Rv_Jiang@outlook.com
  */
@@ -14,7 +14,7 @@ export default interface CommentData {
   ancestorId: number | string
   parentId: number | string
   createDate: string
-  like: number
+  praise: number
   toUser: UserData
   list?: CommentData[]
 }

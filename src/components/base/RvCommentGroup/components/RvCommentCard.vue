@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-06-01 20:54:06
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-09 17:24:36
+ * @LastEditTime: 2022-06-29 20:40:57
  * @Description: 评论item
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -62,7 +62,7 @@
               @click="clickStar"
               round
             >
-              {{ (comment?.like || 0) + +isStar }}
+              {{ (comment?.praise || 0) + +isStar }}
             </el-button>
           </div>
         </div>
