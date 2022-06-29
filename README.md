@@ -79,3 +79,5 @@ vite-plugin-vue-setup-extend,vite-plugin-compression,vite-plugin-imagemin,unplug
 1. 游客和管理员权限关系系统：路由导航守卫，动态路由，请求响应权限验证
 2. Markdown编辑器和阅读器：二次封装md-editor-v3
 3. 评论支持Emoji表情图：字符编码的修改和调整
+4. 文章分享功能（目前支持微博、QQ、微信）
+5. 博客打赏功能（支付宝API，目前为测试阶段）

@@ -26,12 +26,13 @@ const commentFormat = (data: CommentData[]) => {
     const index = result.findIndex(
       (item) => item.id.toString() === curr.ancestorId.toString()
     )
+    if (index !== -1) {
+      if (result[index].list == null) {
+        result[index].list = []
+      }
 
-    if (result[index].list == null) {
-      result[index].list = []
+      ;(result[index].list as CommentData[]).push(curr)
     }
-
-    ;(result[index].list as CommentData[]).push(curr)
   })
 
   return result

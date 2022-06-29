@@ -2,19 +2,23 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-28 08:15:49
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-17 22:49:53
+ * @LastEditTime: 2022-06-29 11:23:45
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
-<script setup lang="ts" name="app">
-  // import { useDark, useToggle } from '@vueuse/core'
-  // const isDark = useDark()
-  // const toggleTheme = useToggle(isDark)
-</script>
+<script setup lang="ts" name="app"></script>
 
 <template>
   <!-- <el-button type="primary" size="default" @click="toggleTheme()">
     {{ isDark }}
+  </el-button> -->
+  <!-- <el-button type="primary">
+    <router-link
+      :to="{ name: 'pay', query: { subject: '打赏', total: '1' } }"
+      target="_blank"
+    >
+      打赏
+    </router-link>
   </el-button> -->
 
   <router-view />
