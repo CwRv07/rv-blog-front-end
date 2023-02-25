@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-28 16:07:17
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-21 22:00:25
+ * @LastEditTime: 2023-02-25 18:30:23
  * @Description: 首页
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -23,24 +23,12 @@
     static: {
       chinese: '卷心菜汪',
       english: 'Rv_Jiang',
-      job: '全栈打杂师',
+      job: '前端工程师',
     },
     detail: {
       article: { num: 0, title: '文章' },
       category: { num: 0, title: '分类' },
       tag: { num: 0, title: '标签' },
-    },
-    link: {
-      github: {
-        title: 'github',
-        icon: '/src/assets/img/icon/github.svg',
-        link: 'https://github.com/CwRv07',
-      },
-      qq: {
-        title: 'qq',
-        icon: 'src/assets/img/icon/qq.svg',
-        link: 'https://qm.qq.com/cgi-bin/qm/qr?k=bAHuX3GIF7PxHQ0iPtSyOTYScceJoocd&noverify=0',
-      },
     },
   })
   // 初始化数据
@@ -111,8 +99,23 @@
         </ul>
         <!-- 链接 -->
         <ul class="link-list">
-          <li class="link-item" v-for="p in aboutMe.link" :key="p.title">
-            <img :src="p.icon" :alt="p.title" @click="linkTo(p.link)" />
+          <li class="link-item">
+            <img
+              src="@/assets/img/icon/github.svg"
+              alt="github"
+              @click="linkTo('https://github.com/CwRv07')"
+            />
+          </li>
+          <li class="link-item">
+            <img
+              src="@/assets/img/icon/qq.svg"
+              alt="qq"
+              @click="
+                linkTo(
+                  'https://qm.qq.com/cgi-bin/qm/qr?k=bAHuX3GIF7PxHQ0iPtSyOTYScceJoocd&noverify=0'
+                )
+              "
+            />
           </li>
         </ul>
       </section>

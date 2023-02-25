@@ -99,8 +99,7 @@ video {
   border: 0;
   font-size: 100%;
   /* font: inherit; */
-  font-family: 'myFont', 'Helvetica Neue', Helvetica, 'PingFang SC',
-    'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+  font-family: 'myfont', arial, sans-serif;
   vertical-align: baseline;
 }
 
@@ -166,7 +165,7 @@ html {
 /* 自定义字体 */
 @font-face {
   font-family: 'myFont';
-  src: url('myfont.ttf');
-  font-weight: 900;
+  src: url('./Montserrat-VariableFont_wght.ttf');
+  font-weight: 500;
   font-style: normal;
 }

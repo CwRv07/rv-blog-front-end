@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-31 20:00:36
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-29 16:15:41
+ * @LastEditTime: 2023-02-25 18:17:48
  * @Description: 文章详情页
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -248,7 +248,7 @@
         :style="{
           'margin-left': catalogMarginLeft + 'px',
           bottom: catalogBottom + 'px',
-          opacity: 1,
+          opacity: catalogDisplay ? 1 : 0,
         }"
         v-show="articleCatalog != null && articleCatalog.length != 0"
       >

@@ -29,7 +29,7 @@
   //icon图标加粗
   .el-icon {
     stroke: currentColor;
-    stroke-width: 50px;
+    stroke-width: 25px;
     transform: translateY(1px);
   }
 
