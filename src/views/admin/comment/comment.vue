@@ -2,14 +2,14 @@
  * @Author: Rv_Jiang
  * @Date: 2022-06-29 16:20:56
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-29 22:24:56
+ * @LastEditTime: 2022-06-30 09:08:49
  * @Description: 评论管理界面
  * @Email: Rv_Jiang@outlook.com
 -->
 <script setup lang="ts" name="adminComment">
   import { Select, CloseBold } from '@element-plus/icons-vue'
   import { CommentAPI } from '@/api'
-  import { ElMessage } from 'element-plus'
+  import { ElMessage, ElMessageBox } from 'element-plus'
   import { MomentUtils } from '@/utils/momentFormat'
 
   /* 评论分页条件查询封装函数 */
@@ -72,7 +72,7 @@
     {
       prop: 'id',
       label: 'ID',
-      width: 100,
+      width: 80,
       fixed: true,
       overflow: true,
     },
@@ -135,15 +135,9 @@
   const editItem = (index: number, detail: CommentProps) => {
     cacheEditData.index = index
     editData.id = cacheEditData.id = detail.id
-    editData.ancestorId = cacheEditData.ancestorId = detail.ancestorId
-    editData.authorId = cacheEditData.authorId = detail.authorId
-    editData.articleId = cacheEditData.articleId = detail.articleId
     editData.content = cacheEditData.content = detail.content
-    editData.createDate = cacheEditData.createDate = detail.createDate
-    editData.parentId = cacheEditData.parentId = detail.parentId
     editData.praise = cacheEditData.praise = detail.praise
     editData.status = cacheEditData.status = detail.status
-    editData.toUid = cacheEditData.toUid = detail.toUid
 
     showDialog.value = true
   }
@@ -263,7 +257,7 @@
           <el-input v-model="editData.id" />
         </el-form-item>
         <el-form-item label="点赞数" prop="praise">
-          <el-input v-model="editData.parentId" />
+          <el-input v-model="editData.praise" />
         </el-form-item>
         <el-form-item label="状态" prop="status">
           <!-- <el-input v-model="editData.status" /> -->
@@ -277,7 +271,11 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item label="内容" prop="content">
-          <el-input v-model="editData.content" />
+          <el-input
+            v-model="editData.content"
+            :autosize="{ minRows: 2, maxRows: 4 }"
+            type="textarea"
+          />
         </el-form-item>
         <el-form-item prop="controller">
           <el-button type="primary" @click="saveItem">修改</el-button>

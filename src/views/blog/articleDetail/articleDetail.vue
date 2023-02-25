@@ -17,6 +17,7 @@
   import { ElMessage } from 'element-plus'
   import RegularUtils from '@/utils/regularUtils'
   import QrcodeVue from 'qrcode.vue'
+  import { filterSensitiveWord, myReplace } from '@/utils/sensitiveWord'
 
   /* 评论板块 */
   // 评论数据
@@ -95,20 +96,44 @@
         type: 'warning',
       })
     }
-    CommentAPI.insertComment(params).then((data) => {
-      console.log(data)
-      if (data.code === 200) {
-        ElMessage({
-          message: '评论提交成功，请等待审核',
-          type: 'success',
+
+    // 过滤敏感词
+    const sentitiveWord = filterSensitiveWord(params.content)
+    if (sentitiveWord != null && sentitiveWord.length !== 0) {
+      ElMessageBox.confirm("是否将您存在的敏感词转为'*'处理", '存在敏感词', {
+        confirmButtonText: '确认转换',
+        cancelButtonText: '自己修改',
+        type: 'warning',
+      })
+        .then(() => {
+          sentitiveWord.forEach((item) => {
+            let star_count = item.length
+            let starstr = ''
+            for (let i = 0; i < star_count; i++) {
+              starstr += '*'
+            }
+            comment.content = myReplace(comment.content, item, starstr)
+          })
         })
-      } else {
-        ElMessage({
-          message: data.msg,
-          type: 'warning',
+        .catch(() => {
+          console.log('存在敏感词', sentitiveWord)
         })
-      }
-    })
+    } else {
+      CommentAPI.insertComment(params).then((data) => {
+        console.log(data)
+        if (data.code === 200) {
+          ElMessage({
+            message: '评论提交成功，请等待审核',
+            type: 'success',
+          })
+        } else {
+          ElMessage({
+            message: data.msg,
+            type: 'warning',
+          })
+        }
+      })
+    }
   }
   /* /评论 */
 
