@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-29 21:00:31
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-21 23:16:20
+ * @LastEditTime: 2023-02-25 18:23:25
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -32,7 +32,7 @@
     <!-- 网站信息 -->
     <section class="website-info row">
       <!-- 页面 -->
-      <section class="page-info col-4 col-md-less-6">
+      <section class="page-info col-3 col-md-less-6">
         <p class="title">页面</p>
         <ul class="list">
           <li class="item">首页</li>
@@ -121,7 +121,7 @@
           margin-bottom: 20px;
         }
         .list {
-          padding-left: 1em;
+          /* padding-left: 1em; */
           list-style: disc;
           transition: color 0.3s;
           cursor: pointer;
