@@ -44,7 +44,6 @@ specifiers:
   vue-global-api: ^0.4.1
   vue-router: ^4.0.13
   vue-tsc: ^0.34.7
-  vue3-progress: 0.0.1-beta4
 
 dependencies:
   '@element-plus/icons-vue': 2.0.10_vue@3.2.47
@@ -57,7 +56,6 @@ dependencies:
   qrcode.vue: 3.3.3_vue@3.2.47
   vue: 3.2.47
   vue-router: 4.1.6_vue@3.2.47
-  vue3-progress: 0.0.1-beta4
 
 devDependencies:
   '@commitlint/cli': 17.4.4
@@ -5408,11 +5406,6 @@ packages:
       '@vue/runtime-dom': 3.2.47
       '@vue/server-renderer': 3.2.47_vue@3.2.47
       '@vue/shared': 3.2.47
-
-  /vue3-progress/0.0.1-beta4:
-    resolution: {integrity: sha512-AiRlyzRvX0FPFkG8fcrFJ6fPQWt/3PdGy062fbWZB3qjAcU3MHzJPU5BZ5HfrmMHHnhk0u46du/k+KflmDdN9Q==}
-    requiresBuild: true
-    dev: false
 
   /wcwidth/1.0.1:
     resolution: {integrity: sha512-XHPEwS0q6TaxcvG85+8EYkbiCux2XtWG2mkc47Ng2A77BQu9+DqIOJldST4HgPkuea7dvKSj5VgX3P1d4rW8Tg==}

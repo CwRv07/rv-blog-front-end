@@ -2,13 +2,22 @@
  * @Author: Rv_Jiang
  * @Date: 2022-06-06 09:17:58
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-10 13:33:39
+ * @LastEditTime: 2023-02-26 17:29:02
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
 <script setup lang="ts" name="about">
   const blogCourse = reactive([
     { date: '22年6月6日', content: 'RvBlog v1.0成立' },
+    {
+      date: '23年2月26日',
+      content: 'RvBlog v1.1迭代，主要进行优化项目。成果如下：',
+      list: [
+        '1. 体积优化：项目体积共压缩71.72%，其中首屏资源体积缩小67.04%；',
+        '2. 加载优化：白屏时间速度约缩短56.17%，首屏加载时间缩短经两次优化缩短为原先60.12%；',
+        '3. 前后端部署从本地部署至腾讯云Linux服务器，并进行部分UI细节调整；',
+      ],
+    },
   ])
 </script>
 
@@ -22,7 +31,9 @@
     <section class="personal-info">
       <ul class="info-list">
         <li class="info-item">一名来自湖南农业大学的20级苦逼在校生</li>
-        <li class="info-item">当前职业为全栈打杂师，将来更偏向前端发展</li>
+        <li class="info-item">
+          当前为一名前端工程师，将来会接触更多技术，争取走全栈方向
+        </li>
         <!-- <li class="info-item"></li> -->
       </ul>
     </section>
@@ -35,7 +46,7 @@
         <li class="info-item">博客名称：RvBlog</li>
         <li class="info-item">链接地址：暂无</li>
         <li class="info-item">
-          博客简介：[RvBlog v1.0](前后端均在Github中开源)
+          博客简介：[RvBlog v1.1](前后端均在Github中开源)
         </li>
       </ul>
     </section>
@@ -63,6 +74,11 @@
           placement="top"
         >
           {{ activity.content }}
+          <ul class="course-list" v-if="activity.list && activity.list.length">
+            <li class="course-item" v-for="item in activity.list" :key="item">
+              {{ item }}
+            </li>
+          </ul>
         </el-timeline-item>
       </el-timeline>
     </section>
@@ -110,6 +126,14 @@
     /* 板块 */
     > section {
       padding: 20px 10px;
+    }
+
+    .blog-course {
+      .course-list {
+        margin-top: 5px;
+        padding-left: 1em;
+        font-size: 16px;
+      }
     }
   }
 </style>
