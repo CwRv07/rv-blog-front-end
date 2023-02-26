@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-28 11:06:07
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-29 15:20:46
+ * @LastEditTime: 2023-02-25 19:01:32
  * @Description: router配置文件
  * @Email: Rv_Jiang@outlook.com
  */
@@ -45,6 +45,7 @@ import { useFullScreenLoadingStore } from '@/store/fullScreenLoading'
 import { useNavStore } from '@/store/nav'
 import { useAdminStore } from '@/store/admin'
 import { ElMessage } from 'element-plus'
+import { app } from '@/main'
 
 router.beforeEach((to) => {
   const fullScreenLoading = useFullScreenLoadingStore()

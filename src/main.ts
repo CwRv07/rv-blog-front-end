@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-28 08:15:49
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2022-06-17 09:32:32
+ * @LastEditTime: 2023-02-26 12:59:25
  * @Description: 主配置文件
  * @Email: Rv_Jiang@outlook.com
  */
@@ -27,7 +27,7 @@ import '@/assets/css/element/index.scss'
 import '@/assets/css/element/dark.scss'
 import MomentFormate from '@/utils/momentFormat'
 
-const app = createApp(App)
+export const app = createApp(App)
 
 app.use(router)
 app.use(createPinia())

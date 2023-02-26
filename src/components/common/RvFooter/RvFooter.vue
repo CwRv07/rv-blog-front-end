@@ -2,7 +2,7 @@
  * @Author: Rv_Jiang
  * @Date: 2022-05-29 21:00:31
  * @LastEditors: Rv_Jiang
- * @LastEditTime: 2023-02-25 18:23:25
+ * @LastEditTime: 2023-02-26 17:13:37
  * @Description: 
  * @Email: Rv_Jiang@outlook.com
 -->
@@ -59,7 +59,7 @@
       <section class="description-info col-4 col-md-less-12">
         <p class="title">博客介绍</p>
         <div class="description-content">
-          关于博客为Rv_Jiang的原创内容，用于存放和分享一些有用或没用的杂物。
+          关于博客为Rv_Jiang的原创内容，用于学习和实践技术。
           <br />
           如果对于本博客您有什么意见和想法，欢迎通过以下联系方式与我交流
         </div>
@@ -69,11 +69,7 @@
     <section class="website-about-me row">
       <!-- 二维码 -->
       <section class="qr-code col-3 col-md-less-12">
-        <el-image
-          src="http://view.jqueryfuns.com/2021/3/8/ce6fab1e5957d7bc7ed25518db41dd87/static/images/weixin.jpg"
-          fit="fill"
-          :lazy="true"
-        />
+        <el-image src="@/assets/img/blog-qrcode.png" fit="fill" />
       </section>
       <!-- 联系方式 -->
       <ul class="contact-detail row col-9 col-md-less-12">
